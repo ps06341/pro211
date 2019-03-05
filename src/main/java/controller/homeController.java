@@ -6,6 +6,8 @@
 package controller;
 
 import components.Site;
+
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -22,7 +24,9 @@ import other.Other;
 @RequestMapping("/home/")
 @Transactional
 public class homeController {
-
+    @Autowired
+    SessionFactory factory;
+    
     @Autowired
     Other other;
 
@@ -38,7 +42,7 @@ public class homeController {
         site.setContent("home/content.jsp");
         site.setFeature("home/feature.jsp");
         model.addAttribute("index", site);
-
+       
         return "home/index";
     }
 
