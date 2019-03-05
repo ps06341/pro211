@@ -14,8 +14,12 @@ import org.hibernate.SessionFactory;
  * @param <T>
  */
 public interface dao<T> {
-    abstract List<T> findAll(SessionFactory sf);
-    abstract void create(SessionFactory sf);
-    abstract void edit(SessionFactory sf);
-    abstract void delete(SessionFactory sf);
+
+    List<T> findAll(SessionFactory sf);
+
+    void create(SessionFactory sf);
+
+    void edit(SessionFactory sf);
+
+    void delete(SessionFactory sf);
 }
