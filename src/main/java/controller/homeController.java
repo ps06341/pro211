@@ -6,6 +6,7 @@
 package controller;
 
 import components.Site;
+import dao.producerDAO;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +37,14 @@ public class homeController {
 
     @RequestMapping("index")
     public String getIndex(Model model) {
-//        site.setTitle(other.getTitleWeb("index"));
+//        set content a site
         site.setTitle(other.getTitleWeb("index"));
         site.setCarousel("home/slider.jsp");
-        site.setContent("home/content.jsp");
+        site.setContent("home/index.jsp");
         site.setFeature("home/feature.jsp");
         model.addAttribute("index", site);
+       
+        
        
         return "home/index";
     }

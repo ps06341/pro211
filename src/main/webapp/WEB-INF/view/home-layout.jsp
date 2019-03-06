@@ -8,6 +8,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,6 +42,7 @@
     <link href="css/font-awesome.min.css" rel="stylesheet"><!-- /.about -->
 </head>
 <body>
+    
     <!-- header-->
     <%@include file="home/header.jsp" %>
     <!-- /.header-->

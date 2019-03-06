@@ -37,16 +37,16 @@
             </div>
             <!-- /.logo -->
             <!-- search -->
-            
+
             <form:form action="home/search.htm" method="GET"  >
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <div class="search-bg">
-                    <input type="text" class="form-control" placeholder="Search Here">
-                    <button type="Submit"><i class="fa fa-search"></i></button>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="search-bg">
+                        <input type="text" class="form-control" placeholder="Search Here">
+                        <button type="Submit"><i class="fa fa-search"></i></button>
+                    </div>
                 </div>
-            </div>
             </form:form>
-                       
+
             <!-- /.search -->
             <!-- account -->
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -75,19 +75,15 @@
                             <li class="active"><a href="home/index.htm"><s:message code="global.menu.home"/></a></li>
                             <li class="has-sub"><a href="home/product.htm"><s:message code="global.menu.product"/></a>
                                 <ul>
-                                    <li><a href="checkout.html">Checkout Form</a></li>
-                                    <li><a href="cart.html">Cart</a> </li>
-                                    <li><a href="login-form.html">Login</a> </li>
-                                    <li><a href="signup-form.html">Signup</a> </li>
-                                    <li><a href="404-page.html">404-page</a> </li>
-                                    <li><a href="styleguide.html">styleguide</a> </li>
+                                   
+
                                 </ul>
                             </li>
                             <li><a href="home/about.htm"><s:message code="global.menu.about"/></a>
                             </li>
                             <li><a href="home/contact-us.htm"><s:message code="global.menu.contact"/></a>
                             </li>
-                             <li class="has-sub"><a href="#"><s:message code="global.menu.service"/></a>
+                            <li class="has-sub"><a href="#"><s:message code="global.menu.service"/></a>
                                 <ul>
                                     <li><a href="checkout.html">Shipping & Delivery</a></li>
                                     <li><a href="cart.html">Return/Exchanges</a></li>
