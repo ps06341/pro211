@@ -25,6 +25,7 @@ public class Producer implements Serializable{
     @GeneratedValue
     private Integer producerId;
     private String producerName;
+    private String image;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "producer")
     private Set<Product> products = new HashSet<Product>(0);
@@ -60,5 +61,15 @@ public class Producer implements Serializable{
         this.producerId = producerId;
         this.producerName = producerName;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
+    
 
 }

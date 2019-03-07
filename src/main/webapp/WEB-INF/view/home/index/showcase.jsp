@@ -22,7 +22,13 @@
     select * from Producer order by ProducerID offset 5 rows fetch next 4 rows only
 </sql:query>
 
-
+    <style>
+        div.showcase-block{
+            min-height: 100px;
+        }
+        
+    </style>
+    
 <div class="space-medium">
     <div class="container">
         <div class="row">
@@ -50,12 +56,12 @@
             <c:forEach var="row" items="${result.rows}">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="showcase-block ">
-                        <div class="display-logo ">
-                            <a href="#">${row.producerName} <!--<img src="./images/samsung.png" alt="">-->
+<!--                        <div class="display-logo ">
+                            <a href="#">${row.producerName} <img src="./images/samsung.png" alt="">
                             </a>
-                        </div>
+                        </div>-->
                         <div class="showcase-img">
-                            <a href="#"><img src="./images/display_img_3.png" alt="">                    </a>
+                            <a href="#"><img src="${row.image}" alt=""> </a>
                         </div>
                     </div>
                 </div>
@@ -66,12 +72,12 @@
             <c:forEach var="row" items="${result2.rows}" >
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="showcase-block">
-                        <div class="display-logo ">
-                            <a href="#">${row.producerName} <!--<img src="./images/htc.png" alt="">-->
+<!--                        <div class="display-logo ">
+                            <a href="#">${row.producerName} <img src="./images/htc.png" alt="">
                             </a>
-                        </div>
+                        </div>-->
                         <div class="showcase-img">
-                            <a href="#"><img src="./images/display_img_4.png" alt=""></a>
+                            <a href="#"><img src="${row.image}" alt=""></a>
                         </div>
                     </div>
                 </div>
