@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
 /**
  *
  * @author Admin
@@ -56,7 +57,7 @@ public class Producer implements Serializable{
     public Producer() {
     }
 
-    public Producer(Integer producerId, String producerName) {
+    public Producer(int producerId, String producerName) {
         this.producerId = producerId;
         this.producerName = producerName;
     }

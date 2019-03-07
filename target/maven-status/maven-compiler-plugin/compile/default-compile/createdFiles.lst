@@ -6,6 +6,7 @@ model\OrderDetailsId.class
 model\Product.class
 model\Employee.class
 controller\errorController.class
+dao\producerDAO.class
 model\Account.class
 model\Customer.class
 controller\homeController.class
