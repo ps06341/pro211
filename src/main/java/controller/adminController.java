@@ -76,6 +76,34 @@ public class adminController {
         model.addAttribute("ptd", list);
         return "admin/index";
     }
+    
+    @RequestMapping("editpt")
+    public String getEditPT(HttpServletRequest request,Model model, @ModelAttribute("protype") ProductType producttype) {
+        site.setTitle(other.getTitleAdmin("management"));
+        site.setContent("admin/editproducttype.jsp");
+        model.addAttribute("indexAdmin", site);
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        String des = request.getParameter("des");
+        ProductType a = new ProductType(id,name,des);
+        model.addAttribute("protype", a);
+        return "admin/index";
+    }
+    
+    @RequestMapping(value = "producttype", params = "updatePT")
+    public String update(Model model, @ModelAttribute("protype") ProductType producttype, 
+            BindingResult errors) {
+        site.setTitle(other.getTitleAdmin("management"));
+        site.setContent("admin/producttype.jsp");
+        model.addAttribute("indexAdmin", site);
+        
+        productypeDAO ptd = new productypeDAO();
+        ptd.edit(factory, producttype);
+        List<ProductType> list = ptd.findAll(factory);
+        model.addAttribute("ptd", list);
+        return "admin/index";
+    }
 
     @RequestMapping("producer")
     public String getProducer(Model model, @ModelAttribute("pro") Producer producer) {

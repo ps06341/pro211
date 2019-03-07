@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>Product Type Management</h2>
-                                    <p>Add New <span class="bread-ntd">Product Type</span></p>
+                                    <p>Edit<span class="bread-ntd">Product Type</span></p>
                                 </div>
                             </div>
                         </div>
@@ -45,12 +45,20 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     <div class="cmp-tb-hd bcs-hd">
-                        <h2>Add New Product Type</h2>
+                        <h2>Edit Product Type</h2>
                         <p>Place one add-on or button on either side of an input. You may also place one on both sides of an input. </p>
                     </div>
                     <div class="row">
                         <form:form action="admin/producttype.htm" method="POST" modelAttribute="protype">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group ic-cmp-int">
+                                <div class="form-ic-cmp">
+                                    <i class="notika-icon notika-star"></i>
+                                </div>
+                                <div class="nk-int-st">
+                                    <form:input path="typeId" class="form-control" placeholder="ID"/>
+                                </div>
+                            </div>
                             <div class="form-group ic-cmp-int">
                                 <div class="form-ic-cmp">
                                     <i class="notika-icon notika-star"></i>
@@ -69,7 +77,7 @@
                             </div>
 
                             <div class="summernote-clickable">
-                                <button name="addPT" class="btn btn-primary btn-sm hec-button">Add
+                                <button name="updatePT" class="btn btn-primary btn-sm hec-button">Update
                                 </button>
                                 <button class="btn btn-primary btn-sm hec-button">Reset
                                 </button>
@@ -82,53 +90,3 @@
     </div>
 </div>
 </div>
-<!-- Data Table area Start-->
-<div class="data-table-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="data-table-list">
-                    <div class="basic-tb-hd">
-                        <h2>Show Table</h2>
-                    </div>
-                    <div class="table-responsive">
-                        <table id="data-table-basic" class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Edit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach var="row" items="${ptd}">
-                                    <tr>
-                                        <td>${row.typeId}</td>
-                                        <td>${row.typeName}</td>
-                                        <td>${row.describe}</td>
-                                        <c:url var="edit" value="admin/editpt.htm">
-                                            <c:param name="id" value="${row.typeId}"/>
-                                            <c:param name="name" value="${row.typeName}"/>
-                                            <c:param name="des" value="${row.describe}"/>
-                                        </c:url>
-                                        <td><a class="btn btn-primary btn-sm hec-button" href="${edit}">Edit</a></td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Edit</th>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Data Table area End-->

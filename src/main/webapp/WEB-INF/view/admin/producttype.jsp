@@ -107,6 +107,11 @@
                                         <td>${row.typeId}</td>
                                         <td>${row.typeName}</td>
                                         <td>${row.describe}</td>
+                                        <c:url var="edit" value="admin/editpt.htm">
+                                            <c:param name="id" value="${row.typeId}"/>
+                                            <c:param name="name" value="${row.typeName}"/>
+                                            <c:param name="des" value="${row.describe}"/>
+                                        </c:url>
                                         <td><a class="btn btn-primary btn-sm hec-button" href="${edit}">Edit</a></td>
                                     </tr>
                                 </c:forEach>

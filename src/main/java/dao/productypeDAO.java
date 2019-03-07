@@ -44,8 +44,16 @@ public class productypeDAO implements dao<ProductType> {
     }
 
     @Override
-    public void edit(SessionFactory sf, ProductType t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void edit(SessionFactory sf, ProductType producttype) {
+        session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        try{
+            session.update(producttype);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }
+        session.close();
     }
 
     @Override
