@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
@@ -14,6 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -35,6 +39,9 @@ public class Product implements Serializable {
     private String productName;
     private Double price;
     private Integer quantity;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date productDAY;
     private String describe;
     private Boolean status;
     private String image;
@@ -126,6 +133,8 @@ public class Product implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
+    
+    
 
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 //	public Set<OrderDetails> getOrderDetailses() {
@@ -135,6 +144,14 @@ public class Product implements Serializable {
 //	public void setOrderDetailses(Set<OrderDetails> orderDetailses) {
 //		this.orderDetailses = orderDetailses;
 //	}
+
+    public Date getProductDAY() {
+        return productDAY;
+    }
+
+    public void setProductDAY(Date productDAY) {
+        this.productDAY = productDAY;
+    }
 
     
 }

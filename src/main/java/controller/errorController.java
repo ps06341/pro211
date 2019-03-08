@@ -17,6 +17,7 @@ import other.Other;
 /**
  *
  * @author Admin
+ * 
  */
 @Controller
 public class errorController {
