@@ -3,6 +3,10 @@
     Created on : Mar 3, 2019, 9:56:45 AM
     Author     : QuangPhu
 --%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 
 <!-- Breadcomb area Start-->
 <div class="breadcomb-area">
@@ -43,26 +47,29 @@
                     <div class="cmp-tb-hd bcs-hd">
                         <h2>Add New Producer</h2>
                         <p>Place one add-on or button on either side of an input. You may also place one on both sides of an input. </p>
+
                     </div>
                     <div class="row">
-                        <form>
+                        <form:form action="admin/producer.htm" method="POST" modelAttribute="pro">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-star"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="Name">
-                                    </div>
+                                        <form:input path="producerName" class="form-control" placeholder="Name"/>                                        
+                                    </div>                                  
+                                    <form:errors path="producerName" class="text-danger"/>
+
                                 </div>
                                 <div class="summernote-clickable">
-                                    <button class="btn btn-primary btn-sm hec-button">Add
+                                    <button name="add" class="btn btn-primary btn-sm hec-button">Add
                                     </button>
-                                    <button class="btn btn-primary btn-sm hec-button">Reset
+                                    <button name="reset" class="btn btn-primary btn-sm hec-button">Reset
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        </form:form>
                     </div>
                 </div>
             </div>
@@ -82,21 +89,28 @@
                         <table id="data-table-basic" class="table table-striped">
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Name</th>
-                                    <th>Description</th>
                                     <th>Edit</th>  
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Test</td>
-
-                                </tr>
+                                <c:forEach var="row" items="${pd}">
+                                    <tr>
+                                        <td>${row.producerId}</td>
+                                        <td>${row.producerName}</td>
+                                        <c:url var="edit" value="admin/edit.htm">
+                                            <c:param name="id" value="${row.producerId}"/>
+                                            <c:param name="name" value="${row.producerName}"/>
+                                        </c:url>
+                                        <td><a class="btn btn-primary btn-sm hec-button" href="${edit}">Edit</a></td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Name</th>
-                                    <th>Description</th>
                                     <th>Edit</th>
                                 </tr>
                             </tfoot>
@@ -107,4 +121,3 @@
         </div>
     </div>
 </div>
-<!-- Data Table area End-->

@@ -17,9 +17,9 @@ public interface dao<T> {
 
     List<T> findAll(SessionFactory sf);
 
-    void create(SessionFactory sf);
+    void create(SessionFactory sf,T t);
 
-    void edit(SessionFactory sf);
+    void edit(SessionFactory sf,T t);
 
     void delete(SessionFactory sf);
 }

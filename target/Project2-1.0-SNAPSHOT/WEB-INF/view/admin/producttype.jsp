@@ -3,6 +3,10 @@
     Created on : Mar 3, 2019, 9:56:45 AM
     Author     : QuangPhu
 --%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 
 <!-- Breadcomb area Start-->
 <div class="breadcomb-area">
@@ -45,38 +49,38 @@
                         <p>Place one add-on or button on either side of an input. You may also place one on both sides of an input. </p>
                     </div>
                     <div class="row">
-                        <form>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-star"></i>
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="Name">
-                                    </div>
+                        <form:form action="admin/producttype.htm" method="POST" modelAttribute="protype">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group ic-cmp-int">
+                                <div class="form-ic-cmp">
+                                    <i class="notika-icon notika-star"></i>
                                 </div>
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-tax"></i>
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <textarea class="form-control" rows="5" id="comment" placeholder="Description"></textarea>
-                                    </div>
-                                </div>
-                                
-                                <div class="summernote-clickable">
-                                    <button class="btn btn-primary btn-sm hec-button">Add
-                                    </button>
-                                    <button class="btn btn-primary btn-sm hec-button">Reset
-                                    </button>
+                                <div class="nk-int-st">
+                                    <form:input path="typeName" class="form-control" placeholder="Name"/>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                            <div class="form-group ic-cmp-int">
+                                <div class="form-ic-cmp">
+                                    <i class="notika-icon notika-tax"></i>
+                                </div>
+                                <div class="nk-int-st">
+                                    <form:textarea path="describe" class="form-control" rows="5" id="comment" placeholder="Description"/>
+                                </div>
+                            </div>
+
+                            <div class="summernote-clickable">
+                                <button name="addPT" class="btn btn-primary btn-sm hec-button">Add
+                                </button>
+                                <button class="btn btn-primary btn-sm hec-button">Reset
+                                </button>
+                            </div>
+                        </div>
+                    </form:form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 <!-- Data Table area Start-->
 <div class="data-table-area">
@@ -91,20 +95,30 @@
                         <table id="data-table-basic" class="table table-striped">
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>   
-                                </tr>
+                                <c:forEach var="row" items="${ptd}">
+                                    <tr>
+                                        <td>${row.typeId}</td>
+                                        <td>${row.typeName}</td>
+                                        <td>${row.describe}</td>
+                                        <c:url var="edit" value="admin/editpt.htm">
+                                            <c:param name="id" value="${row.typeId}"/>
+                                            <c:param name="name" value="${row.typeName}"/>
+                                            <c:param name="des" value="${row.describe}"/>
+                                        </c:url>
+                                        <td><a class="btn btn-primary btn-sm hec-button" href="${edit}">Edit</a></td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Edit</th>
