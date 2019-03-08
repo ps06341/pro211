@@ -6,11 +6,21 @@
 package controller;
 
 import components.Site;
+import dao.producerDAO;
+import dao.productypeDAO;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import model.Producer;
+import model.ProductType;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import other.Other;
 
@@ -30,6 +40,9 @@ public class adminController {
     @Qualifier("indexAdmin")
     Site site;
 
+    @Autowired
+    SessionFactory factory;
+
     @RequestMapping("index")
     public String getIndexAdmin(Model model) {
         site.setTitle(other.getTitleAdmin("index"));
@@ -37,23 +50,117 @@ public class adminController {
         model.addAttribute("indexAdmin", site);
         return "admin/index";
     }
-    
+
     @RequestMapping("producttype")
-    public String getProductType(Model model) {
+    public String getProductType(Model model, @ModelAttribute("protype") ProductType producttype) {
         site.setTitle(other.getTitleAdmin("management"));
         site.setContent("admin/producttype.jsp");
         model.addAttribute("indexAdmin", site);
+        
+        productypeDAO ptd = new productypeDAO();
+        List<ProductType> list = ptd.findAll(factory);
+        model.addAttribute("ptd", list);
         return "admin/index";
     }
     
+    @RequestMapping(value = "producttype", params = "addPT")
+    public String insertPT(Model model, @ModelAttribute("protype") ProductType producttype) {
+        site.setTitle(other.getTitleAdmin("management"));
+        site.setContent("admin/producttype.jsp");
+        model.addAttribute("indexAdmin", site);
+        
+        productypeDAO ptd = new productypeDAO();
+        ptd.create(factory, producttype);
+        
+        List<ProductType> list = ptd.findAll(factory);
+        model.addAttribute("ptd", list);
+        return "admin/index";
+    }
+    
+    @RequestMapping("editpt")
+    public String getEditPT(HttpServletRequest request,Model model, @ModelAttribute("protype") ProductType producttype) {
+        site.setTitle(other.getTitleAdmin("management"));
+        site.setContent("admin/editproducttype.jsp");
+        model.addAttribute("indexAdmin", site);
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        String des = request.getParameter("des");
+        ProductType a = new ProductType(id,name,des);
+        model.addAttribute("protype", a);
+        return "admin/index";
+    }
+    
+    @RequestMapping(value = "producttype", params = "updatePT")
+    public String update(Model model, @ModelAttribute("protype") ProductType producttype, 
+            BindingResult errors) {
+        site.setTitle(other.getTitleAdmin("management"));
+        site.setContent("admin/producttype.jsp");
+        model.addAttribute("indexAdmin", site);
+        
+        productypeDAO ptd = new productypeDAO();
+        ptd.edit(factory, producttype);
+        List<ProductType> list = ptd.findAll(factory);
+        model.addAttribute("ptd", list);
+        return "admin/index";
+    }
+
     @RequestMapping("producer")
-    public String getProducer(Model model) {
+    public String getProducer(Model model, @ModelAttribute("pro") Producer producer) {
         site.setTitle(other.getTitleAdmin("management"));
         site.setContent("admin/producer.jsp");
         model.addAttribute("indexAdmin", site);
+
+        producerDAO pd = new producerDAO();      
+        List<Producer> list = pd.findAll(factory);
+        model.addAttribute("pd", list);
         return "admin/index";
     }
     
+    @RequestMapping(value = "producer", params = "add")
+    public String insert(Model model, @ModelAttribute("pro") Producer producer, 
+            BindingResult errors) {
+        site.setTitle(other.getTitleAdmin("management"));
+        site.setContent("admin/producer.jsp");
+        model.addAttribute("indexAdmin", site);
+        producerDAO pd = new producerDAO();
+        if (producer.getProducerName().isEmpty()) {
+            errors.rejectValue("producerName","pro","Name is null");
+        }
+        else {
+            pd.create(factory, producer);
+        }
+        List<Producer> list = pd.findAll(factory);
+        model.addAttribute("pd", list);
+        return "admin/index";
+    }
+    
+    @RequestMapping("edit")
+    public String getEdit(HttpServletRequest request,Model model, @ModelAttribute("pro") Producer producer) {
+        site.setTitle(other.getTitleAdmin("management"));
+        site.setContent("admin/editproducer.jsp");
+        model.addAttribute("indexAdmin", site);
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        Producer a = new Producer(id,name);
+        model.addAttribute("pro", a);
+        return "admin/index";
+    }
+    
+    @RequestMapping(value = "producer", params = "update")
+    public String update(Model model, @ModelAttribute("pro") Producer producer, 
+            BindingResult errors) {
+        site.setTitle(other.getTitleAdmin("management"));
+        site.setContent("admin/producer.jsp");
+        model.addAttribute("indexAdmin", site);
+        producerDAO pd = new producerDAO();
+        pd.edit(factory, producer);
+        List<Producer> list = pd.findAll(factory);
+        model.addAttribute("pd", list);
+        return "admin/index";
+    }
+
     @RequestMapping("product")
     public String getProduct(Model model) {
         site.setTitle(other.getTitleAdmin("management"));
@@ -61,7 +168,7 @@ public class adminController {
         model.addAttribute("indexAdmin", site);
         return "admin/index";
     }
-    
+
     @RequestMapping("about")
     public String getAbout(Model model) {
         site.setTitle(other.getTitleAdmin("about"));
@@ -69,7 +176,7 @@ public class adminController {
         model.addAttribute("indexAdmin", site);
         return "admin/index";
     }
-    
+
     @RequestMapping("employee")
     public String getEmployee(Model model) {
         site.setTitle(other.getTitleAdmin("management"));

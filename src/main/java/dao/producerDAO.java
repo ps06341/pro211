@@ -5,52 +5,61 @@
  */
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import model.Producer;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 /**
  *
- * @author Admin
+ * @author QuangPhu
  */
-public class producerDAO implements dao<Producer>{
+public class producerDAO implements dao<Producer> {
 
-    @Override
-    public List<Producer> findAll(SessionFactory sf) {
-        return this.findAll(sf, 0, 10);
+    public producerDAO() {
     }
-    
-    public List<Producer> findAll(SessionFactory sf,int min,int max) {
-        Session session = sf.getCurrentSession();
-        Query query = session.createQuery("FROM Producer as p");
-        query.setFirstResult(min);
-        query.setMaxResults(max);
-        List<Producer> list = query.list();
-        
+    private Session session;
+    @Override
+    public List findAll(SessionFactory sf) {
+        List<Producer> list = new ArrayList<Producer>();
+        session = sf.getCurrentSession();
+        Query query = session.createQuery("From Producer");
+        list = query.list();
         return list;
     }
 
     @Override
-    public void create(SessionFactory sf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void create(SessionFactory sf,Producer producer) {
+        session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        try{
+            session.save(producer);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }
+        session.close();
     }
 
     @Override
-    public void edit(SessionFactory sf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void edit(SessionFactory sf,Producer producer) {
+        session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        try{
+            session.update(producer);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }
+        session.close();
     }
 
     @Override
     public void delete(SessionFactory sf) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
-    
-    
-    
+
 }

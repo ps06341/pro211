@@ -1,5 +1,6 @@
 dao\dao.class
 model\Orders.class
+dao\productDAO.class
 other\Other.class
 components\Site.class
 model\OrderDetailsId.class
@@ -12,6 +13,7 @@ model\Customer.class
 controller\homeController.class
 controller\adminController.class
 model\OrderDetails.class
+dao\productypeDAO.class
 other\ResourceNotFoundException.class
 model\Producer.class
 model\ProductType.class
