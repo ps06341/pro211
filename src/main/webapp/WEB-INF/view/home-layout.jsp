@@ -77,6 +77,6 @@
     <script type="text/javascript" src="js/owl.carousel.min.js"></script>
     <script type="text/javascript" src="js/multiple-carousel.js"></script>
     <script type="text/javascript" src="js/effect.js"></script>
-
+    
 </body>
 </html>

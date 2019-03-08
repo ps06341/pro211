@@ -7,6 +7,8 @@ package controller;
 
 import components.Site;
 import dao.producerDAO;
+import dao.productDAO;
+import model.Product;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import other.Other;
 
@@ -25,9 +28,10 @@ import other.Other;
 @RequestMapping("/home/")
 @Transactional
 public class homeController {
+
     @Autowired
     SessionFactory factory;
-    
+
     @Autowired
     Other other;
 
@@ -43,9 +47,7 @@ public class homeController {
         site.setContent("home/index.jsp");
         site.setFeature("home/feature.jsp");
         model.addAttribute("index", site);
-       
-        
-       
+
         return "home/index";
     }
 
@@ -138,8 +140,21 @@ public class homeController {
         return "home/index";
     }
 
+    @RequestMapping(value="/{row.productId}")
+    public String getProductDetails(Model model,@PathVariable("row.productId") String id) {
+        site.setTitle(other.getTitleWeb("productDetails"));
+        site.setCarousel("home/blank.jsp");
+        site.setContent("home/productDetails.jsp");
+        site.setFeature("home/blank.jsp");
+        model.addAttribute("index", site);
+        
+        productDAO pd = new productDAO();
+        Product p = pd.find(factory, other.subString(id));
+        model.addAttribute("productSingle", p);
+        
+        
 
-    
-
+        return "home/index";
+    }
 
 }

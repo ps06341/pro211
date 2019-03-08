@@ -91,6 +91,7 @@
                             <value>classpath:home.service</value>
                             <value>classpath:home.cart</value>
                             <value>classpath:home.error</value>
+                            <value>classpath:home.productDetails</value>
                             <value>classpath:admin.index</value>
                             <value>classpath:admin.about</value>
                             <value>classpath:admin.management</value>

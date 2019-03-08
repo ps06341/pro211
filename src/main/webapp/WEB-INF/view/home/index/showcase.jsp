@@ -26,7 +26,9 @@
         div.showcase-block{
             min-height: 100px;
         }
-        
+        div.space-medium{
+            padding-top: 50px;
+        }
     </style>
     
 <div class="space-medium">
