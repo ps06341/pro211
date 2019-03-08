@@ -7,10 +7,13 @@ package controller;
 
 import components.Site;
 import dao.producerDAO;
+import dao.productDAO;
 import dao.productypeDAO;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import model.Producer;
+import model.Product;
 import model.ProductType;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +21,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -162,12 +164,51 @@ public class adminController {
     }
 
     @RequestMapping("product")
-    public String getProduct(Model model) {
+    public String getProduct(Model model, @ModelAttribute("prod") Product product) {
         site.setTitle(other.getTitleAdmin("management"));
         site.setContent("admin/product.jsp");
         model.addAttribute("indexAdmin", site);
+        
+        
+        
+        productDAO pro = new productDAO();
+        List<Product> listpro = pro.findAll(factory);
+        model.addAttribute("pro",listpro);
+        
         return "admin/index";
     }
+    
+    @ModelAttribute("producers")
+    public List<Product> getProducers() {
+        producerDAO md = new producerDAO();
+        List<Product> list = new ArrayList<>();
+        list = md.findAll(factory);
+        return list;
+    }
+    
+    @ModelAttribute("producttypes")
+    public List<ProductType> getProducttypes() {
+        productypeDAO md = new productypeDAO();
+        List<ProductType> list = new ArrayList<>();
+        list = md.findAll(factory);
+        return list;
+    }
+    
+    @RequestMapping(value = "product", params = "addPro")
+    public String insertProduct(Model model, @ModelAttribute("prod") Product product, 
+            BindingResult errors) {
+        site.setTitle(other.getTitleAdmin("management"));
+        site.setContent("admin/product.jsp");
+        model.addAttribute("indexAdmin", site);
+        
+        productDAO pro = new productDAO();
+        pro.create(factory, product);
+        
+        List<Product> listpro = pro.findAll(factory);
+        model.addAttribute("pro",listpro);
+        return "admin/index";
+    }
+    
 
     @RequestMapping("about")
     public String getAbout(Model model) {
