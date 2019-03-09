@@ -11,7 +11,7 @@
 
 <sql:setDataSource driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
                    url="jdbc:sqlserver://localhost:1433;databaseName=db"
-                   user="sa" password="123"
+                   user="sa" password="123456"
                    var="con"/>
 
 

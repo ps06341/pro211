@@ -6,12 +6,15 @@
 package controller;
 
 import components.Site;
+import dao.employeeDAO;
 import dao.producerDAO;
 import dao.productDAO;
 import dao.productypeDAO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import model.Account;
+import model.Employee;
 import model.Producer;
 import model.Product;
 import model.ProductType;
@@ -223,6 +226,10 @@ public class adminController {
         site.setTitle(other.getTitleAdmin("management"));
         site.setContent("admin/employee.jsp");
         model.addAttribute("indexAdmin", site);
+        
+        employeeDAO ep = new employeeDAO();
+        List<Employee> listep = ep.findAll(factory);
+        model.addAttribute("ep",listep);
         return "admin/index";
     }
 }

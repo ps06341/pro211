@@ -60,7 +60,14 @@
                                         <form:input path="producerName" class="form-control" placeholder="Name"/>                                        
                                     </div>                                  
                                     <form:errors path="producerName" class="text-danger"/>
-
+                                </div>
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-support"></i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <form:input path="image" type="file" class="form-control"/>
+                                    </div>
                                 </div>
                                 <div class="summernote-clickable">
                                     <button name="add" class="btn btn-primary btn-sm hec-button">Add
@@ -91,6 +98,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
+                                    <th>Image</th>
                                     <th>Edit</th>  
                                 </tr>
                             </thead>
@@ -99,6 +107,7 @@
                                     <tr>
                                         <td>${row.producerId}</td>
                                         <td>${row.producerName}</td>
+                                        <td><img src="${row.image}"width="30" height="30"></td>
                                         <c:url var="edit" value="admin/edit.htm">
                                             <c:param name="id" value="${row.producerId}"/>
                                             <c:param name="name" value="${row.producerName}"/>
@@ -111,6 +120,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
+                                    <th>Image</th>
                                     <th>Edit</th>
                                 </tr>
                             </tfoot>

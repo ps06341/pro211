@@ -47,7 +47,7 @@
                     <div class="cmp-tb-hd bcs-hd">
                         <h2>Edit Producer</h2>
                         <p>Place one add-on or button on either side of an input. You may also place one on both sides of an input. </p>
-                        
+
                     </div>
                     <div class="row">
                         <form:form action="admin/producer.htm" method="POST" modelAttribute="pro">
@@ -67,6 +67,14 @@
                                     <div class="nk-int-st">
                                         <form:input path="producerName" class="form-control" placeholder="Name"/>                                        
                                     </div>                                  
+                                </div>
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-support"></i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <form:input path="image" type="file" class="form-control"/>
+                                    </div>
                                 </div>
                                 <div class="summernote-clickable">
                                     <button name="update" class="btn btn-primary btn-sm hec-button">Update

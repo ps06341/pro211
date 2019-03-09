@@ -84,6 +84,7 @@
                                     </div>
                                 </div>
 
+                                <form:input path="status" value="0" type="hidden" class="form-control" placeholder="Status"/>
 
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -173,7 +174,15 @@
                                         <td>${row.quantity}</td>
                                         <td>${row.productType.typeName}</td>
                                         <td>${row.producer.producerName}</td>
-                                        <td>${row.status?"Còn hàng":"Hết hàng"}</td>
+                                        <c:if test="${row.quantity == 0}">
+                                            <c:set var="dd" value="Hết hàng"/>
+                                            <td bgcolor="#FF0000">${dd}</td>
+                                        </c:if>
+                                        <c:if test="${row.quantity > 0}">
+                                            <c:set var="dd" value="Còn hàng"/>
+                                            <td>${dd}</td>
+                                        </c:if>
+                                        
                                         <td>${row.describe}</td>
                                         <td><img src="${row.image}"></td>
                                         <td><button name="addPRO" class="btn btn-primary btn-sm hec-button">Edit

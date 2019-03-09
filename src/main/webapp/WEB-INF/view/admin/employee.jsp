@@ -3,6 +3,10 @@
     Created on : Mar 3, 2019, 9:56:45 AM
     Author     : QuangPhu
 --%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 
 <!-- Breadcomb area Start-->
 <div class="breadcomb-area">
@@ -100,7 +104,7 @@
                                         <input type="radio" name="gender"> Male
                                         <input type="radio" name="gender"> Female
                                     </div>
-                                    
+
                                 </div>
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -110,7 +114,7 @@
                                         <input type="text" class="form-control" placeholder="Address">
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-calendar"></i>
@@ -135,10 +139,19 @@
                                         <i class="notika-icon notika-edit"></i>
                                     </div>
                                     <div class="nk-int-st">
+                                        <input type="text" class="form-control" placeholder="Phone Number">
+                                    </div>
+                                </div>
+
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-edit"></i>
+                                    </div>
+                                    <div class="nk-int-st">
                                         <input type="text" class="form-control" placeholder="Salary">
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-calendar"></i>
@@ -148,7 +161,7 @@
                                         <input type="date" class="form-control">
                                     </div>
                                 </div>
-                               
+
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-calendar"></i>
@@ -198,8 +211,8 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Gender</th>
-                                    <th>Address</th>
                                     <th>Birthday</th>
+                                    <th>Address</th>
                                     <th>E-Mail</th>
                                     <th>Salary</th>
                                     <th>Start day</th>
@@ -211,29 +224,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                </tr>
+                                <c:forEach var="row" items="${ep}">
+                                    <tr>
+                                        <td>${row.empId}</td>
+                                        <td>${row.name}</td>
+                                        <td>${row.gender?"Nam":"Nữ"}</td>
+                                        <td>${row.birthday}</td>
+                                        <td>${row.address}</td>
+                                        <td>${row.email}</td>
+                                        <td>${row.phone}</td>
+                                        <td>${row.startDay}</td>
+                                        <td>${row.endDay}</td>
+                                        <td><img src="${row.image}"></td>
+                                        <td>${row.account.username?"Admin":"Employee"}</td>
+                                        <td>${row.account.username}</td>              
+                                        <td>Test</td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Gender</th>
-                                    <th>Address</th>
                                     <th>Birthday</th>
+                                    <th>Address</th>
                                     <th>E-Mail</th>
                                     <th>Salary</th>
                                     <th>Start day</th>
