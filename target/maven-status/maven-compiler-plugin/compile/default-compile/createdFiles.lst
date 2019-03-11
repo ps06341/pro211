@@ -1,5 +1,6 @@
 dao\dao.class
 model\Orders.class
+dao\employeeDAO.class
 dao\productDAO.class
 other\Other.class
 components\Site.class
@@ -16,4 +17,5 @@ model\OrderDetails.class
 dao\productypeDAO.class
 other\ResourceNotFoundException.class
 model\Producer.class
+dao\accountDAO.class
 model\ProductType.class

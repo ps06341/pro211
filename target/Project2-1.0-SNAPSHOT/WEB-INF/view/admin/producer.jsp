@@ -50,7 +50,7 @@
 
                     </div>
                     <div class="row">
-                        <form:form action="admin/producer.htm" method="POST" modelAttribute="pro">
+                        <form:form action="admin/producer.htm" method="POST" modelAttribute="pro" enctype="multipart/form-data">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -107,7 +107,7 @@
                                     <tr>
                                         <td>${row.producerId}</td>
                                         <td>${row.producerName}</td>
-                                        <td><img src="${row.image}"width="30" height="30"></td>
+                                        <td><img src="img/${row.image}"width="30" height="30"></td>
                                         <c:url var="edit" value="admin/edit.htm">
                                             <c:param name="id" value="${row.producerId}"/>
                                             <c:param name="name" value="${row.producerName}"/>

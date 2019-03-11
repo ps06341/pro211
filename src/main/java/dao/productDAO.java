@@ -57,7 +57,7 @@ public class productDAO implements dao<Product> {
     }
 
     @Override
-    public void delete(SessionFactory sf) {
+    public void delete(SessionFactory sf, Product product) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

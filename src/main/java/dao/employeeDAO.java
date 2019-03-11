@@ -11,6 +11,7 @@ import model.Employee;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -32,16 +33,32 @@ public class employeeDAO implements dao<Employee> {
 
     @Override
     public void create(SessionFactory sf, Employee employee) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        try{
+            session.save(employee);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }
+        session.close();
     }
 
     @Override
     public void edit(SessionFactory sf, Employee employee) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        try{
+            session.update(employee);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }
+        session.close();
     }
 
     @Override
-    public void delete(SessionFactory sf) {
+    public void delete(SessionFactory sf, Employee employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

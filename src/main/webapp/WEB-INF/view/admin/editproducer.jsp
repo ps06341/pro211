@@ -50,7 +50,7 @@
 
                     </div>
                     <div class="row">
-                        <form:form action="admin/producer.htm" method="POST" modelAttribute="pro">
+                        <form:form action="admin/producer.htm" method="POST" modelAttribute="pro" enctype="multipart/form-data">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">

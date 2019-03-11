@@ -4,6 +4,7 @@ C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\components\Sit
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\model\Account.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\model\OrderDetails.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\model\OrderDetailsId.java
+C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\dao\accountDAO.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\dao\productDAO.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\other\Other.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\model\Employee.java
@@ -17,3 +18,4 @@ C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\dao\dao.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\other\ResourceNotFoundException.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\model\Customer.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\model\ProductType.java
+C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\dao\employeeDAO.java

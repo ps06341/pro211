@@ -51,35 +51,6 @@
                     <div class="row">
                         <form>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <label>Account Information</label>
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-credit-card"></i>
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="Username">
-                                    </div>
-                                </div>
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-credit-card"></i>
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <input type="password" class="form-control" placeholder="Password">
-                                    </div>
-                                </div>
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-next"></i>
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Role</label>
-                                        <select class="form-control" id="sel1">
-                                            <option>1</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <label>Employee Information</label>
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-credit-card"></i>
@@ -178,6 +149,16 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <input type="file" class="form-control">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-credit-card"></i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <a href="admin/account.htm">Create Account?</a>
+                                        <input type="text" class="form-control" placeholder="Account ID">
                                     </div>
                                 </div>
 

@@ -21,5 +21,5 @@ public interface dao<T> {
 
     void edit(SessionFactory sf,T t);
 
-    void delete(SessionFactory sf);
+    void delete(SessionFactory sf,T t);
 }
