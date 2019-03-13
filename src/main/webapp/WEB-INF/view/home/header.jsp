@@ -16,6 +16,7 @@
             </div>
             <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                 <ul>
+                    <li>${sessionScope.username }<a  href="${pageContext.request.contextPath }/home/logout.htm">Logout</a></li> 
                     <li>+180-123-4567</li>
                     <li>info@demo.com</li>
                     <li><a href="home/help.htm">Help</a></li>

@@ -3,7 +3,10 @@
     Created on : Feb 26, 2019, 11:20:18 PM
     Author     : Admin
 --%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="s" %>
 
  <!-- login-form -->
 <div class="page-header">
@@ -34,30 +37,36 @@
                                     <h3 class="mb10">Login</h3>
                                 </div>
                                 <!-- form -->
-                                <form:form action="" >
+                               ${message}
+                                <form:form action="home/login.htm" method="POST" modelAttribute="customer">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <label class="control-label sr-only" for="email"></label>
+                                            <label class="control-label sr-only" for="username"></label>
                                             <div class="login-input">
-                                                <input id="email" name="emaol" type="text" class="form-control" placeholder="Enter your email id"  required>
+                                                <form:input path="username" name="username" type="text" class="form-control" placeholder="Enter your username"/>
+                                                <form:errors path="username" cssClass="error"/>
                                                 <div class="login-icon"><i class="fa fa-user"></i></div>
                                             </div>
+                                        </div>
+
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label class="control-label sr-only"></label>
                                             <div class="login-input">
-                                                <input name="password" type="password" class="form-control" placeholder="******"  required>
+                                                <form:input path="password" name="password" type="password" class="form-control" placeholder="******"/>
+                                               <form:errors path="password" cssClass="error"/>
                                                 <div class="login-icon"><i class="fa fa-lock"></i></div>
-                                                
                                             </div>
+                                        </div>
+
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20 ">
-                                        <button class="btn btn-primary btn-block mb10">Login</button>
+                                        <button name="showLog" class="btn btn-primary btn-block mb10">Login</button>
                                         <div>
-                                            <p>Have an Acount? <a href="#">Register</a></p>
+                                            <p>Have an Acount? <a href="home/register.htm">Register</a></p>
                                         </div>
                                     </div>
                                 </form:form>

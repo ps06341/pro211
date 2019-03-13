@@ -3,6 +3,10 @@
     Created on : Mar 3, 2019, 9:56:45 AM
     Author     : QuangPhu
 --%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 
 <!-- Breadcomb area Start-->
 <div class="breadcomb-area">
@@ -45,14 +49,14 @@
                         <p>Place one add-on or button on either side of an input. You may also place one on both sides of an input. </p>
                     </div>
                     <div class="row">
-                        <form>
+                        <form:form action="admin/product.htm" method="POST" modelAttribute="prod">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-credit-card"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="ID">
+                                        <form:input path="productId" class="form-control" placeholder="ID"/>
                                     </div>
                                 </div>
                                 <div class="form-group ic-cmp-int">
@@ -60,7 +64,7 @@
                                         <i class="notika-icon notika-star"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="Name">
+                                        <form:input path="productName" class="form-control" placeholder="Name"/>
                                     </div>
                                 </div>
                                 <div class="form-group ic-cmp-int">
@@ -68,7 +72,7 @@
                                         <i class="notika-icon notika-dollar"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="Price">
+                                        <form:input path="price" class="form-control" placeholder="Price"/>
                                     </div>
                                 </div>
                                 <div class="form-group ic-cmp-int">
@@ -76,60 +80,59 @@
                                         <i class="notika-icon notika-edit"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="Quantity">
+                                        <form:input path="quantity" class="form-control" placeholder="Quantity"/>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-edit"></i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Producer:</label>
+                                        <form:select class="form-control" path="producer.producerId" items="${producers}"
+                                                     itemValue="producerId" itemLabel="producerName"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-next"></i>
+                                        <i class="notika-icon notika-edit"></i>
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Type:</label>
-                                        <select class="form-control" id="sel1">
-                                            <option>1</option>
-                                        </select>
+                                        <form:select class="form-control" path="productType.typeId" items="${producttypes}"
+                                                     itemValue="typeId" itemLabel="typeName"/>
                                     </div>
                                 </div>
-                                
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-next"></i>
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Producer:</label>
-                                        <select class="form-control" id="sel1">
-                                            <option>1</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
+
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-tax"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <textarea class="form-control" rows="5" id="comment" placeholder="Description"></textarea>
+                                        <form:textarea path="describe" class="form-control" rows="5" id="comment" placeholder="Description"/>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="file" class="form-control">
+                                        <form:input path="image" type="file" class="form-control"/>
                                     </div>
                                 </div>
 
                                 <div class="summernote-clickable">
-                                    <button class="btn btn-primary btn-sm hec-button">Add
+                                    <button name="addPro" class="btn btn-primary btn-sm hec-button">Add
                                     </button>
-                                    <button class="btn btn-primary btn-sm hec-button">Reset
+                                    <button name="reset" class="btn btn-primary btn-sm hec-button">Reset
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        </form:form>
                     </div>
                 </div>
             </div>
@@ -162,18 +165,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                    <td>Test</td>
-                                </tr>
+                                <c:forEach var="row" items="${pro}">
+                                    <tr>
+                                        <td>${row.productId}</td>
+                                        <td>${row.productName}</td>
+                                        <td>${row.price}</td>
+                                        <td>${row.quantity}</td>
+                                        <td>${row.productType.typeName}</td>
+                                        <td>${row.producer.producerName}</td>
+                                        <td>${row.status?"Còn hàng":"Hết hàng"}</td>
+                                        <td>${row.describe}</td>
+                                        <td><img src="${row.image}"></td>
+                                        <td><button name="addPRO" class="btn btn-primary btn-sm hec-button">Edit
+                                            </button></td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                             <tfoot>
                                 <tr>

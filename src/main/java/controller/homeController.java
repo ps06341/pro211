@@ -6,18 +6,27 @@
 package controller;
 
 import components.Site;
+import dao.customerDAO;
 import dao.producerDAO;
 import dao.productDAO;
+import javax.servlet.http.HttpSession;
+import model.Customer;
 import model.Product;
+import org.hibernate.Session;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import other.Other;
 
 /**
@@ -108,26 +117,77 @@ public class homeController {
     }
 
     @RequestMapping("login")
-    public String getLogin(Model model) {
+    public String getLogin(Model model, @ModelAttribute("customer") Customer customer) {
         site.setTitle(other.getTitleWeb("login"));
         site.setCarousel("home/blank.jsp");
         site.setContent("home/login.jsp");
         site.setFeature("home/blank.jsp");
         model.addAttribute("index", site);
-
-        return "home/index";
+        return "home/login";
     }
 
+    @RequestMapping(value = "login", params = "showLog")
+    public String login(ModelMap model,
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
+            HttpSession httpSession, Customer customer) {
+        site.setTitle(other.getTitleWeb("login"));
+        site.setContent("home/login.jsp");
+        model.addAttribute("index", site);
+        Session session = factory.getCurrentSession();
+        try {
+            customerDAO ptd = new customerDAO();
+            Customer existing = ptd.findByUsername(factory, customer.getUsername());
+            if (!existing.getPassword().equals(password)) {
+                model.addAttribute("message", "sai mat khau !");
+            } else {
+                httpSession.setAttribute("username", existing.getUsername());
+                return "redirect:/home/index.htm";
+            }
+        } catch (Exception e) {
+            model.addAttribute("message", "Sai ten dang nhap !");
+        }
+
+        return "home/login";
+    }
+
+    @RequestMapping("logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("username");
+        return "redirect:/home/index.htm";
+    }
     @RequestMapping("register")
-    public String getRegister(Model model) {
+    public String getRegister(Model model, @ModelAttribute("abc") Customer customer) {
         site.setTitle(other.getTitleWeb("register"));
         site.setCarousel("home/blank.jsp");
         site.setContent("home/register.jsp");
         site.setFeature("home/blank.jsp");
         model.addAttribute("index", site);
-
-        return "home/index";
+        return "home/register";
     }
+
+    @RequestMapping(value = "register", method = RequestMethod.POST)
+    public String insertCus(ModelMap model, @ModelAttribute("abc") Customer customer) {
+        site.setTitle(other.getTitleWeb("register"));
+        site.setContent("home/register.jsp");
+        model.addAttribute("index", site);
+        Session session = factory.openSession();
+        Transaction t = session.beginTransaction();
+        try {
+
+            session.save(customer);
+            t.commit();
+            model.addAttribute("message", "dang ky thanh cong !");
+            return "redirect:/home/login.htm";
+        } catch (Exception e) {
+            t.rollback();
+            model.addAttribute("message", "dang ky that bai !");
+        } finally {
+            session.close();
+        }
+        return "home/register";
+
+    }   
 
     @RequestMapping("cart")
     public String getCart(Model model) {
