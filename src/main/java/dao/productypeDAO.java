@@ -57,8 +57,19 @@ public class productypeDAO implements dao<ProductType> {
     }
 
     @Override
-    public void delete(SessionFactory sf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void delete(SessionFactory sf, ProductType producttype) {
+        session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        try{
+            producttype.getTypeId();
+            session.delete(producttype);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }
+        session.close();
+    
     }
+    
     
 }

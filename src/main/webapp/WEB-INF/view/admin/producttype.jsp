@@ -58,6 +58,7 @@
                                 <div class="nk-int-st">
                                     <form:input path="typeName" class="form-control" placeholder="Name"/>
                                 </div>
+                                <form:errors path="typeName" class="text-danger"/>
                             </div>
                             <div class="form-group ic-cmp-int">
                                 <div class="form-ic-cmp">
@@ -99,6 +100,7 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -113,6 +115,12 @@
                                             <c:param name="des" value="${row.describe}"/>
                                         </c:url>
                                         <td><a class="btn btn-primary btn-sm hec-button" href="${edit}">Edit</a></td>
+                                        <td>
+                                            <form action="admin/deletetype.htm">
+                                                <input type="hidden" name="ma" value="${row.typeId}"/>
+                                                <input class ="delete" type="submit" name="action" value="Delete"/>
+                                            </form>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
@@ -122,6 +130,7 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                             </tfoot>
                         </table>

@@ -36,6 +36,12 @@
                             </li>
                             <li><a href="admin/product.htm">Product Management</a>
                             </li>
+                            <li><a href="admin/account.htm">Account Management</a>
+                            </li>
+                            <li><a href="admin/order.htm">Order Management</a>
+                            </li>
+                            <li><a href="admin/customer.htm">Customer Management</a>
+                            </li>
                         </ul>
                     </div>
                     <div id="Interface" class="tab-pane notika-tab-menu-bg animated flipInX">

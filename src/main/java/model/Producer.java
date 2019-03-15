@@ -57,9 +57,10 @@ public class Producer implements Serializable{
     public Producer() {
     }
 
-    public Producer(Integer producerId, String producerName) {
+    public Producer(Integer producerId, String producerName,String image) {
         this.producerId = producerId;
         this.producerName = producerName;
+        this.image = image;
     }
 
     public String getImage() {

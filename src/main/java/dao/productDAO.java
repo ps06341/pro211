@@ -18,29 +18,46 @@ import org.hibernate.Transaction;
  * @author QuangPhu
  */
 public class productDAO implements dao<Product> {
-
+    
+    private Session session;
+    
     @Override
     public List<Product> findAll(SessionFactory sf) {
-        List<Product> list = new ArrayList<>();
-        Session session = sf.getCurrentSession();
-        Query query = session.createQuery("FROM Product");
+        List<Product> list = new ArrayList<Product>();
+        session = sf.getCurrentSession();
+        Query query = session.createQuery("From Product");
         list = query.list();
-        
         return list;
     }
 
     @Override
     public void create(SessionFactory sf, Product product) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        try{
+            session.save(product);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }
+        session.close();
     }
 
     @Override
     public void edit(SessionFactory sf, Product product) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        try{
+            session.update(product);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }
+        session.close();
     }
 
     @Override
-    public void delete(SessionFactory sf) {
+    public void delete(SessionFactory sf, Product product) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -50,21 +67,5 @@ public class productDAO implements dao<Product> {
         
         return product;
     }
-//    public Product find(SessionFactory sf, String productId) {
-//        Session session = sf.openSession();
-//        Transaction trans = session.beginTransaction();
-//        Product product =null;
-//        try {
-//            product = (Product) session.get(Product.class, productId);
-//            trans.commit();
-//        } catch (Exception e) {
-//            System.out.println("productDAO find: "+e);
-//        }finally{
-//            session.close();
-//        }
-//        
-//        return product;
-//    }
-    
     
 }

@@ -64,9 +64,9 @@ public class customerDAO implements dao<Customer>{
     public void edit(SessionFactory sf, Customer t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
-    public void delete(SessionFactory sf) {
+    public void delete(SessionFactory sf, Customer t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

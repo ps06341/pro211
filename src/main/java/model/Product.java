@@ -36,13 +36,14 @@ public class Product implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "TypeID")
     private ProductType productType;
-    
     private String productName;
     private Double price;
     private Integer quantity;
+    
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date productDAY;
+    
     private String describe;
     private Boolean status;
     private String image;
@@ -51,16 +52,25 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(String productId, Producer producer, ProductType productType, String productName, Double price, Integer quantity, String describe, Boolean status, String image) {
+    public Product(String productId, Producer producer, ProductType productType,Date productDAY, String productName, Double price, Integer quantity, String describe, Boolean status, String image) {
         this.productId = productId;
         this.producer = producer;
         this.productType = productType;
         this.productName = productName;
+        this.productDAY = productDAY;
         this.price = price;
         this.quantity = quantity;
         this.describe = describe;
         this.status = status;
         this.image = image;
+    }
+    
+    public Product(String productId,Producer producer,String productName,ProductType productType,Date productDAY){
+        this.productId = productId;
+        this.producer = producer;
+        this.productName = productName;
+        this.productType = productType;
+        this.productDAY = productDAY;
     }
 
     public String getProductId() {

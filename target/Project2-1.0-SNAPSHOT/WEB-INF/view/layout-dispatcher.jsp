@@ -10,6 +10,8 @@
         pageContext.forward("home-layout.jsp");
     } else if (view.startsWith("admin/")) {
         pageContext.forward("admin-layout.jsp");
+    }else if (view.startsWith("login/")) {
+        pageContext.forward("admin/login.jsp");
     }else if (view.startsWith("blank/")) {
         pageContext.forward("blank-layout.jsp");
     } else {
