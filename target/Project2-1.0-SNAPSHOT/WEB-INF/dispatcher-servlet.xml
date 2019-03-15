@@ -127,13 +127,11 @@
        	p:sessionFactory-ref="sessionFactory" />
     <tx:annotation-driven transaction-manager="transactionManager" />
 
-<!--    mapping upload file, add 2 library commons-fileupload-1.2.2.jar, commons-io-1.3.2.jar
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-         maxUploadSize=20MB 
         <property name="maxUploadSize" value="20971520"/>
     </bean>
-    -->
+
     <!--    <bean id="mailSender"
           class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="smtp.gmail.com" />
