@@ -25,7 +25,7 @@ public class Employee implements Serializable {
     @Id
     private String empId;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "AccountID", unique = true)
+    @JoinColumn(name = "AccountID")
     private Account account;
     private String name;
     private Boolean gender;

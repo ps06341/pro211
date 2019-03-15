@@ -78,7 +78,14 @@
         <%@include file="admin/header.jsp" %>
         <!-- End Header Top Area -->
         <!-- Main Menu area start-->
-        <%@include file="admin/navigation.jsp" %>
+        <c:choose>
+            <c:when test="${sessionScope.role == false}">
+                <%@include file="admin/navigationemp.jsp" %>
+            </c:when>
+            <c:otherwise>
+                <%@include file="admin/navigation.jsp" %>
+            </c:otherwise>
+        </c:choose>
         <!-- Main Menu area End-->
         <!-- Start Status area -->
         <jsp:include page="${indexAdmin.content}" ></jsp:include>
@@ -87,70 +94,70 @@
         <%@include file="admin/footer.jsp" %>
         <!-- End Footer area-->
         <!-- jquery
-		============================================ -->
-    <script src="js-admin/vendor/jquery-1.12.4.min.js"></script>
-    <!-- bootstrap JS
-		============================================ -->
-    <script src="js-admin/bootstrap.min.js"></script>
-    <!-- wow JS
-		============================================ -->
-    <script src="js-admin/wow.min.js"></script>
-    <!-- price-slider JS
-		============================================ -->
-    <script src="js-admin/jquery-price-slider.js"></script>
-    <!-- owl.carousel JS
-		============================================ -->
-    <script src="js-admin/owl.carousel.min.js"></script>
-    <!-- scrollUp JS
-		============================================ -->
-    <script src="js-admin/jquery.scrollUp.min.js"></script>
-    <!-- meanmenu JS
-		============================================ -->
-    <script src="js-admin/meanmenu/jquery.meanmenu.js"></script>
-    <!-- counterup JS
-		============================================ -->
-    <script src="js-admin/counterup/jquery.counterup.min.js"></script>
-    <script src="js-admin/counterup/waypoints.min.js"></script>
-    <script src="js-admin/counterup/counterup-active.js"></script>
-    <!-- mCustomScrollbar JS
-		============================================ -->
-    <script src="js-admin/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <!-- sparkline JS
-		============================================ -->
-    <script src="js-admin/sparkline/jquery.sparkline.min.js"></script>
-    <script src="js-admin/sparkline/sparkline-active.js"></script>
-    <!-- flot JS
-		============================================ -->
-    <script src="js-admin/flot/jquery.flot.js"></script>
-    <script src="js-admin/flot/jquery.flot.resize.js"></script>
-    <script src="js-admin/flot/flot-active.js"></script>
-    <!-- knob JS
-		============================================ -->
-    <script src="js-admin/knob/jquery.knob.js"></script>
-    <script src="js-admin/knob/jquery.appear.js"></script>
-    <script src="js-admin/knob/knob-active.js"></script>
-    <!--  Chat JS
-		============================================ -->
-    <script src="js-admin/chat/jquery.chat.js"></script>
-    <!--  todo JS
-		============================================ -->
-    <script src="js-admin/todo/jquery.todo.js"></script>
-	<!--  wave JS
-		============================================ -->
-    <script src="js-admin/wave/waves.min.js"></script>
-    <script src="js-admin/wave/wave-active.js"></script>
-    <!-- plugins JS
-		============================================ -->
-    <script src="js-admin/plugins.js"></script>
-    <!-- Data Table JS
-		============================================ -->
-    <script src="js-admin/data-table/jquery.dataTables.min.js"></script>
-    <script src="js-admin/data-table/data-table-act.js"></script>
-    <!-- main JS
-		============================================ -->
-    <script src="js-admin/main.js"></script>
-	<!-- tawk chat JS
-		============================================ -->
-    <script src="js-admin/tawk-chat.js"></script>
+                ============================================ -->
+        <script src="js-admin/vendor/jquery-1.12.4.min.js"></script>
+        <!-- bootstrap JS
+                    ============================================ -->
+        <script src="js-admin/bootstrap.min.js"></script>
+        <!-- wow JS
+                    ============================================ -->
+        <script src="js-admin/wow.min.js"></script>
+        <!-- price-slider JS
+                    ============================================ -->
+        <script src="js-admin/jquery-price-slider.js"></script>
+        <!-- owl.carousel JS
+                    ============================================ -->
+        <script src="js-admin/owl.carousel.min.js"></script>
+        <!-- scrollUp JS
+                    ============================================ -->
+        <script src="js-admin/jquery.scrollUp.min.js"></script>
+        <!-- meanmenu JS
+                    ============================================ -->
+        <script src="js-admin/meanmenu/jquery.meanmenu.js"></script>
+        <!-- counterup JS
+                    ============================================ -->
+        <script src="js-admin/counterup/jquery.counterup.min.js"></script>
+        <script src="js-admin/counterup/waypoints.min.js"></script>
+        <script src="js-admin/counterup/counterup-active.js"></script>
+        <!-- mCustomScrollbar JS
+                    ============================================ -->
+        <script src="js-admin/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+        <!-- sparkline JS
+                    ============================================ -->
+        <script src="js-admin/sparkline/jquery.sparkline.min.js"></script>
+        <script src="js-admin/sparkline/sparkline-active.js"></script>
+        <!-- flot JS
+                    ============================================ -->
+        <script src="js-admin/flot/jquery.flot.js"></script>
+        <script src="js-admin/flot/jquery.flot.resize.js"></script>
+        <script src="js-admin/flot/flot-active.js"></script>
+        <!-- knob JS
+                    ============================================ -->
+        <script src="js-admin/knob/jquery.knob.js"></script>
+        <script src="js-admin/knob/jquery.appear.js"></script>
+        <script src="js-admin/knob/knob-active.js"></script>
+        <!--  Chat JS
+                    ============================================ -->
+        <script src="js-admin/chat/jquery.chat.js"></script>
+        <!--  todo JS
+                    ============================================ -->
+        <script src="js-admin/todo/jquery.todo.js"></script>
+        <!--  wave JS
+                ============================================ -->
+        <script src="js-admin/wave/waves.min.js"></script>
+        <script src="js-admin/wave/wave-active.js"></script>
+        <!-- plugins JS
+                    ============================================ -->
+        <script src="js-admin/plugins.js"></script>
+        <!-- Data Table JS
+                    ============================================ -->
+        <script src="js-admin/data-table/jquery.dataTables.min.js"></script>
+        <script src="js-admin/data-table/data-table-act.js"></script>
+        <!-- main JS
+                    ============================================ -->
+        <script src="js-admin/main.js"></script>
+        <!-- tawk chat JS
+                ============================================ -->
+        <script src="js-admin/tawk-chat.js"></script>
     </body>
 </html>

@@ -58,10 +58,11 @@ public class producerDAO implements dao<Producer> {
     }
 
     @Override
-    public void delete(SessionFactory sf,Producer producer) {
+    public void delete(SessionFactory sf, Producer producer) {
         session = sf.openSession();
         Transaction trans = session.beginTransaction();
         try{
+            producer.getProducerId();
             session.delete(producer);
             trans.commit();
         }catch(Exception ex){

@@ -5,8 +5,10 @@
  */
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import model.Account;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -22,7 +24,11 @@ public class accountDAO implements dao<Account> {
     private Session session;
     @Override
     public List<Account> findAll(SessionFactory sf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Account> list = new ArrayList<Account>();
+        session = sf.getCurrentSession();
+        Query query = session.createQuery("From Account");
+        list = query.list();
+        return list;
     }
 
     @Override
@@ -56,4 +62,18 @@ public class accountDAO implements dao<Account> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public Account findByID(SessionFactory sf,String username){
+        Account account = null;
+        session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        try{
+        account = (Account) session.get(Account.class, username);
+           trans.commit();
+        }catch(Exception e){
+          System.out.println("Username find: "+e);
+        }finally{
+            session.close();
+        }
+        return account;
+    }
 }

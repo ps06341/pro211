@@ -74,6 +74,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <form:input path="image" type="file" class="form-control"/>
+                                        <form:input path="image" type="hidden" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="summernote-clickable">

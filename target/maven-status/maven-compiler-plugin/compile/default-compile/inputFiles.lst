@@ -9,6 +9,7 @@ C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\dao\productDAO
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\other\Other.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\model\Employee.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\controller\homeController.java
+C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\dao\orderDAO.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\controller\adminController.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\dao\productypeDAO.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\dao\producerDAO.java
@@ -16,6 +17,8 @@ C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\model\Orders.j
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\model\Product.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\dao\dao.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\other\ResourceNotFoundException.java
+C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\dao\customerDAO.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\model\Customer.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\model\ProductType.java
 C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\dao\employeeDAO.java
+C:\Users\QuangPhu\Documents\NetBeansProjects\pro211\src\main\java\dao\orderDetailDAO.java

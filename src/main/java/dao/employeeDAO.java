@@ -62,4 +62,19 @@ public class employeeDAO implements dao<Employee> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public Employee findByID(SessionFactory sf,String username){
+        Employee employee = null;
+        session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        try{
+        employee = (Employee) session.get(Employee.class, username);
+           trans.commit();
+        }catch(Exception e){
+          System.out.println("Username find: "+e);
+        }finally{
+            session.close();
+        }
+        return employee;
+    }
+    
 }

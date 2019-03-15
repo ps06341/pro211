@@ -99,21 +99,32 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Image</th>
-                                    <th>Edit</th>  
+                                    <th>Edit</th>
+                                    <th>Delete</th> 
                                 </tr>
                             </thead>
                             <tbody>
                                 <c:forEach var="row" items="${pd}">
+
                                     <tr>
                                         <td>${row.producerId}</td>
                                         <td>${row.producerName}</td>
                                         <td><img src="img/${row.image}"width="30" height="30"></td>
-                                        <c:url var="edit" value="admin/edit.htm">
-                                            <c:param name="id" value="${row.producerId}"/>
-                                            <c:param name="name" value="${row.producerName}"/>
-                                        </c:url>
+                                            <c:url var="edit" value="admin/edit.htm">
+                                                <c:param name="id" value="${row.producerId}"/>
+                                                <c:param name="name" value="${row.producerName}"/>
+                                                <c:param name="img" value="${row.image}"/>
+                                            </c:url>
                                         <td><a class="btn btn-primary btn-sm hec-button" href="${edit}">Edit</a></td>
+
+                                        <td>
+                                            <form action="admin/delete.htm">
+                                                <input type="hidden" name="ma" value="${row.producerId}"/>
+                                                <input class ="delete" type="submit" name="action" value="Delete"/>
+                                            </form>
+                                        </td>
                                     </tr>
+                                    </form>
                                 </c:forEach>
                             </tbody>
                             <tfoot>
@@ -122,6 +133,7 @@
                                     <th>Name</th>
                                     <th>Image</th>
                                     <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                             </tfoot>
                         </table>

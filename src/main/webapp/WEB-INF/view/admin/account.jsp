@@ -58,6 +58,7 @@
                                     <div class="nk-int-st">
                                         <form:input path="username" class="form-control" placeholder="Username"/>
                                     </div>
+                                    <form:errors path="username" class="text-danger"/>
                                 </div>
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -66,6 +67,7 @@
                                     <div class="nk-int-st">
                                         <form:password path="password" class="form-control" placeholder="Password"/>
                                     </div>
+                                    <form:errors path="password" class="text-danger"/>
                                 </div>
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -94,4 +96,46 @@
         </div>
     </div>
 </div>
+<!-- Data Table area Start-->
+<div class="data-table-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="data-table-list">
+                    <div class="basic-tb-hd">
+                        <h2>Show Table</h2>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="data-table-basic" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Role</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="row" items="${ac}">
+                                    <tr>
+                                        <td>${row.username}</td>
+                                        <td>${row.role?"Employee":"Admin"}</td>
+                                        <td><a class="btn btn-primary btn-sm hec-button" href="${edit}">Edit</a></td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Role</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Data Table area End-->
 
