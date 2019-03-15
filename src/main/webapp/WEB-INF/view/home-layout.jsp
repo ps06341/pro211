@@ -40,9 +40,13 @@
     <link href="css/owl.theme.default.css" rel="stylesheet">
     <!-- FontAwesome CSS -->
     <link href="css/font-awesome.min.css" rel="stylesheet"><!-- /.about -->
+    <!-- DataTable Data-->
+    <link href="css/jquery.dataTables.min.css" rel="stylesheet" />
+    
+    
 </head>
 <body>
-    
+
     <!-- header-->
     <%@include file="home/header.jsp" %>
     <!-- /.header-->
@@ -50,9 +54,9 @@
     <!-- slider -->
     <jsp:include page="${index.carousel}" ></jsp:include>
 
-    <!-- /.slider -->
+        <!-- /.slider -->
 
-    <!-- ALO ALO CONTENT -->   
+        <!-- ALO ALO CONTENT -->   
     <jsp:include page="${index.content}" ></jsp:include>
         <!-- /.ALO ALO CONTENT -->    
 
@@ -77,6 +81,12 @@
     <script type="text/javascript" src="js/owl.carousel.min.js"></script>
     <script type="text/javascript" src="js/multiple-carousel.js"></script>
     <script type="text/javascript" src="js/effect.js"></script>
-    
+    <!-- DataTable Data-->
+    <script type="text/javascript" src="js/data-table/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/data-table/data-table-act.js"></script>
+
+
+
+
 </body>
 </html>

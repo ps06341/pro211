@@ -32,7 +32,7 @@
                     <!-- /.sidenav-section -->
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
-                <jsp:include page="product/list.jsp" ></jsp:include>
+                <jsp:include page="product/list2.jsp" ></jsp:include>
                 </div>
             </div>
         </div>
