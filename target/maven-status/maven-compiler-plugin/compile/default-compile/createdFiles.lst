@@ -1,6 +1,7 @@
 dao\dao.class
 model\Orders.class
 dao\productDAO.class
+interceptor\payInterceptor.class
 other\Other.class
 components\Site.class
 model\OrderDetailsId.class

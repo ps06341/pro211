@@ -90,6 +90,9 @@ public class homeController {
         site.setContent("home/product.jsp");
         site.setFeature("home/blank.jsp");
         model.addAttribute("index", site);
+        
+        productDAO pd = new productDAO();
+        model.addAttribute("products", pd.findAll(factory));
 
         return "home/index";
     }
@@ -109,7 +112,7 @@ public class homeController {
     public String getSearch(Model model) {
         site.setTitle(other.getTitleWeb("search"));
         site.setCarousel("home/blank.jsp");
-        site.setContent("home/blank.jsp");
+        site.setContent("home/404.jsp");
         site.setFeature("home/blank.jsp");
         model.addAttribute("index", site);
 

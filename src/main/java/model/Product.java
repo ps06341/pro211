@@ -36,6 +36,7 @@ public class Product implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "TypeID")
     private ProductType productType;
+    
     private String productName;
     private Double price;
     private Integer quantity;

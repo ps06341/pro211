@@ -21,7 +21,6 @@ import javax.persistence.OneToMany;
 public class Account implements Serializable {
 
     @Id
-    
     private String username;
     private String password;
     private Boolean role;
