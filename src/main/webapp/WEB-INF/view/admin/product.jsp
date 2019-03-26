@@ -49,7 +49,8 @@
                         <p>Place one add-on or button on either side of an input. You may also place one on both sides of an input. </p>
                     </div>
                     <div class="row">
-                        <form:form action="admin/product.htm" method="POST" modelAttribute="prod">
+                        <form:form action="admin/product.htm" method="POST" modelAttribute="prod" enctype="multipart/form-data">
+                            <div class="text-danger" align="center">${message}</div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -58,6 +59,7 @@
                                     <div class="nk-int-st">
                                         <form:input path="productId" class="form-control" placeholder="ID"/>
                                     </div>
+                                    <form:errors path="productId" class="text-danger"/>
                                 </div>
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -66,6 +68,7 @@
                                     <div class="nk-int-st">
                                         <form:input path="productName" class="form-control" placeholder="Name"/>
                                     </div>
+                                    <form:errors path="productName" class="text-danger"/>
                                 </div>
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -74,16 +77,30 @@
                                     <div class="nk-int-st">
                                         <form:input path="price" class="form-control" placeholder="Price"/>
                                     </div>
+                                    <form:errors path="price" class="text-danger"/>
                                 </div>
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-edit"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <form:input path="quantity" class="form-control" placeholder="Quantity"/>
+                                        <form:input path="quantity" name="quantity" class="form-control" placeholder="Quantity"/>
                                     </div>
+                                    <form:errors path="quantity" class="text-danger"/>
                                 </div>
 
+                                <form:input path="status" value="1" type="hidden" class="form-control" placeholder="Status"/>
+
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-calendar"></i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Product Day</label>
+                                        <form:input path="productDAY" type="date" class="form-control"/>
+                                    </div>
+                                    <form:errors path="productDAY" class="text-danger"/>
+                                </div>
 
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -128,7 +145,7 @@
                                 <div class="summernote-clickable">
                                     <button name="addPro" class="btn btn-primary btn-sm hec-button">Add
                                     </button>
-                                    <button name="reset" class="btn btn-primary btn-sm hec-button">Reset
+                                    <button name="rsPro" class="btn btn-primary btn-sm hec-button">Reset
                                     </button>
                                 </div>
                             </div>
@@ -156,6 +173,7 @@
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
+                                    <th>Day</th>
                                     <th>Type</th>
                                     <th>Producer</th>
                                     <th>Status</th>
@@ -171,35 +189,58 @@
                                         <td>${row.productName}</td>
                                         <td>${row.price}</td>
                                         <td>${row.quantity}</td>
+                                        <td>${row.productDAY}</td>
                                         <td>${row.productType.typeName}</td>
                                         <td>${row.producer.producerName}</td>
-                                        <td>${row.status?"Còn hàng":"Hết hàng"}</td>
-                                        <td>${row.describe}</td>
-                                        <td><img src="${row.image}"></td>
-                                        <td><button name="addPRO" class="btn btn-primary btn-sm hec-button">Edit
-                                            </button></td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Type</th>
-                                    <th>Producer</th>
-                                    <th>Status</th>
-                                    <th>Description</th>
-                                    <th>Image</th>
-                                    <th>Edit</th>  
-                                </tr>
-                            </tfoot>
-                        </table>
+                                        <c:choose>
+                                            <c:when test="${row.quantity <= 0}">
+                                                <c:set var="dd" value="Out of stock"/>
+                                                <td><font color="red"><strong>${dd}</strong></red></td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                 <c:set var="dd" value="Stock"/>
+                                                <td><font color="green"><strong>${dd}</strong></red></td>
+                                            </c:otherwise>
+                                        </c:choose>
+                                                <td>${row.describe}</td>
+                                                <td><img src="images/dodien/${row.image}"width="30" height="30"></td>
+                                                    <c:url var="edit" value="admin/editproduct.htm">
+                                                        <c:param name="id" value="${row.productId}"/>
+                                                        <c:param name="name" value="${row.productName}"/>
+                                                        <c:param name="price" value="${row.price}"/>
+                                                        <c:param name="quantity" value="${row.quantity}"/>
+                                                        <c:param name="pday" value="${row.productDAY}"/>
+                                                        <c:param name="status" value="${row.status}"/>
+                                                        <c:param name="type" value="${row.productType.typeId}"/>
+                                                        <c:param name="pro" value="${row.producer.producerId}"/>
+                                                        <c:param name="describe" value="${row.describe}"/>
+                                                        <c:param name="img" value="${row.image}"/>
+                                                    </c:url>
+                                                <td><a name="addPRO" href="${edit}" class="btn btn-primary btn-sm hec-button">Edit
+                                                    </a></td>
+                                            </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Day</th>
+                                                <th>Type</th>
+                                                <th>Producer</th>
+                                                <th>Status</th>
+                                                <th>Description</th>
+                                                <th>Image</th>
+                                                <th>Edit</th>  
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<!-- Data Table area End-->
+            <!-- Data Table area End-->

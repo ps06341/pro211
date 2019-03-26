@@ -4,10 +4,20 @@
     Author     : Admin
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="s" %>
 
+<style>
+    .form-control{
+        text-transform: none;
+
+    }
+    #registerForm{
+        color: red;  
+    }
+</style>
 <div class="page-header">
     <div class="container">
         <div class="row">
@@ -39,12 +49,13 @@
                                 <p>Please fill all Resgister form Fields Below. </p>
                             </div>
                             ${message}
-                            <form:form action="home/register.htm" method="POST" modelAttribute="abc"> 
+                            <form:form action="home/register.htm" method="POST" modelAttribute="abc" id="registerForm"> 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="control-label sr-only" for="username"> </label>
-                                        <form:input path="username" class="form-control" placeholder="Enter Your Name" />
                                         <form:errors path="username" cssClass="error"/>
+                                        <form:input path="username" name="username" class="form-control" placeholder="Enter Your Name" />
+
                                     </div>
                                 </div>
 
@@ -66,7 +77,7 @@
                                     <div class="form-group">
                                         <label class="control-label sr-only" for="gender"> </label>
                                         <label>Gender</label>
-                                        <form:radiobutton path="gender" value="true" label="Male"/>
+                                        <form:radiobutton checked="checked" path="gender" value="true" label="Male"/>
                                         <form:radiobutton path="gender" value="false" label="Female"/>
                                         <form:errors path="gender" cssClass="error"/>
                                     </div>
@@ -75,7 +86,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="control-label sr-only" for="birthday"> </label>
-                                        <form:input path="birthday"  class="form-control" placeholder="Enter Your Birthday" />
+                                        <form:input path="birthday"  type ="date"  class="form-control" placeholder="Enter Your Birthday" />
                                         <form:errors path="birthday" cssClass="error"/>
                                     </div>     
                                 </div>
@@ -83,7 +94,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="control-label sr-only" for="phone"> </label>
-                                        <form:input path="phone" class="form-control" placeholder="Enter Your Phone" />
+                                        <form:input path="phone" name="phone" class="form-control" placeholder="Enter Your Phone" />
                                         <form:errors path="phone" cssClass="error"/>
                                     </div>
                                 </div>
@@ -97,13 +108,14 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="control-label sr-only" for="email"> </label>
-                                        <form:input path="email" class="form-control" placeholder="Enter Your Email" />
                                         <form:errors path="email" cssClass="error"/>
+                                        <form:input path="email" name="email" type="email" class="form-control" placeholder="Enter Your Email" />
+
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                                    <button name="addCus" class="btn btn-primary btn-block mb10">Register</button>
+                                    <button type="submit" name="addCus" class="btn btn-primary btn-block mb10">Register</button>
                                     <div>
                                         <p>Have an Acount? <a href="home/login.htm">Login</a></p>
                                     </div>

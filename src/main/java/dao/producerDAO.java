@@ -57,6 +57,20 @@ public class producerDAO implements dao<Producer> {
         session.close();
     }
 
+
+    public void delete(SessionFactory sf, Producer producer) {
+        session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        try{
+            producer.getProducerId();
+            session.delete(producer);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }
+        session.close();
+    }
+
     @Override
     public void delete(SessionFactory sf) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

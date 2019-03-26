@@ -69,6 +69,12 @@ public class Producer implements Serializable{
     public void setImage(String image) {
         this.image = image;
     }
+
+    public Producer(Integer producerId, String producerName, String image) {
+        this.producerId = producerId;
+        this.producerName = producerName;
+        this.image = image;
+    }
     
     
 

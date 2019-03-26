@@ -45,6 +45,20 @@ public class Orders implements Serializable {
     public Orders() {
     }
 
+    public Orders(Date orderDay, String describe, Boolean status) {
+        this.orderDay = orderDay;
+        this.describe = describe;
+        this.status = status;
+    }
+    
+    public Orders(Date orderDay, String describe, Boolean status,Customer customer) {
+        this.orderDay = orderDay;
+        this.describe = describe;
+        this.status = status;
+        this.customer = customer;
+    }
+
+    
     public Orders(Integer orderId, Customer customer, Date orderDay, String describe, Boolean status) {
         this.orderId = orderId;
         this.customer = customer;

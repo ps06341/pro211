@@ -5,6 +5,7 @@
  */
 package other;
 
+import java.util.Date;
 import org.springframework.stereotype.Component;
 
 /**
@@ -24,6 +25,10 @@ public class Other {
     
     public String subString(String string){
         return string.substring(0,string.length()-4);
+    }
+    
+    public Date getNow(){
+        return new Date();
     }
     
 }

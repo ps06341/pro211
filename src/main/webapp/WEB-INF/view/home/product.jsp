@@ -24,13 +24,13 @@
     <div class="content">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <!--<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">-->
                     <!-- sidenav-section -->
-                    <div id='cssmenu'>
+<!--                    <div id='cssmenu'>
                         <jsp:include page="product/category.jsp" ></jsp:include>
-                    </div>
+                    </div>-->
                     <!-- /.sidenav-section -->
-                </div>
+                <!--</div>-->
                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                 <jsp:include page="product/list2.jsp" ></jsp:include>
                 </div>

@@ -28,15 +28,15 @@ public class Product implements Serializable {
 
     @Id
     private String productId;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ProducerID")
     private Producer producer;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "TypeID")
     private ProductType productType;
-    
+
     private String productName;
     private Double price;
     private Integer quantity;
@@ -51,6 +51,10 @@ public class Product implements Serializable {
     public Product() {
     }
 
+    public Product(String productId, Producer producer, ProductType productType, String productName, Double price, Integer quantity, Date productDAY, String describe, Boolean status, String image) {
+
+    }
+
     public Product(String productId, Producer producer, ProductType productType, String productName, Double price, Integer quantity, String describe, Boolean status, String image) {
         this.productId = productId;
         this.producer = producer;
@@ -58,6 +62,19 @@ public class Product implements Serializable {
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
+        this.describe = describe;
+        this.status = status;
+        this.image = image;
+    }
+
+    public Product(String productId, Producer producer, ProductType productType, Date productDAY, String productName, Double price, int quantity, String describe, Boolean status, String image) {
+        this.productId = productId;
+        this.producer = producer;
+        this.productType = productType;
+        this.productName = productName;
+        this.price = price;
+        this.quantity = quantity;
+        this.productDAY = productDAY;
         this.describe = describe;
         this.status = status;
         this.image = image;
@@ -134,8 +151,6 @@ public class Product implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
-    
-    
 
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 //	public Set<OrderDetails> getOrderDetailses() {
@@ -145,7 +160,6 @@ public class Product implements Serializable {
 //	public void setOrderDetailses(Set<OrderDetails> orderDetailses) {
 //		this.orderDetailses = orderDetailses;
 //	}
-
     public Date getProductDAY() {
         return productDAY;
     }
@@ -154,5 +168,4 @@ public class Product implements Serializable {
         this.productDAY = productDAY;
     }
 
-    
 }

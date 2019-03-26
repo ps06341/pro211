@@ -50,37 +50,39 @@
                     </div>
                     <div class="row">
                         <form:form action="admin/producttype.htm" method="POST" modelAttribute="protype">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-star"></i>
+                            <div class="text-danger" align="center">${message}</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-star"></i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <form:input path="typeName" class="form-control" placeholder="Name"/>
+                                    </div>
+                                    <form:errors path="typeName" class="text-danger"/>
                                 </div>
-                                <div class="nk-int-st">
-                                    <form:input path="typeName" class="form-control" placeholder="Name"/>
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-tax"></i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <form:textarea path="describe" class="form-control" rows="5" id="comment" placeholder="Description"/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-tax"></i>
-                                </div>
-                                <div class="nk-int-st">
-                                    <form:textarea path="describe" class="form-control" rows="5" id="comment" placeholder="Description"/>
-                                </div>
-                            </div>
 
-                            <div class="summernote-clickable">
-                                <button name="addPT" class="btn btn-primary btn-sm hec-button">Add
-                                </button>
-                                <button class="btn btn-primary btn-sm hec-button">Reset
-                                </button>
+                                <div class="summernote-clickable">
+                                    <button name="addPT" class="btn btn-primary btn-sm hec-button">Add
+                                    </button>
+                                    <button name="rsPT" class="btn btn-primary btn-sm hec-button">Reset
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </form:form>
+                        </form:form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 <!-- Data Table area Start-->
 <div class="data-table-area">
@@ -99,6 +101,7 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -113,6 +116,12 @@
                                             <c:param name="des" value="${row.describe}"/>
                                         </c:url>
                                         <td><a class="btn btn-primary btn-sm hec-button" href="${edit}">Edit</a></td>
+                                        <td>
+                                            <form action="admin/deletetype.htm">
+                                                <input type="hidden" name="ma" value="${row.typeId}"/>
+                                                <input class ="delete" type="submit" name="action" value="Delete"/>
+                                            </form>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
@@ -122,6 +131,7 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                             </tfoot>
                         </table>

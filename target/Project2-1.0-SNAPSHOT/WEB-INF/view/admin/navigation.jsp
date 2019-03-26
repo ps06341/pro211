@@ -3,7 +3,7 @@
     Created on : Mar 3, 2019, 9:23:58 AM
     Author     : QuangPhu
 --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="main-menu-area mg-tb-40">
     <div class="container">
         <div class="row">
@@ -28,14 +28,34 @@
                     </div>
                     <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
-                            <li><a href="admin/employee.htm">Employee Management</a>
-                            </li>
-                            <li><a href="admin/producttype.htm">Product Type Management</a>
-                            </li>
-                            <li><a href="admin/producer.htm">Producer Management</a>
-                            </li>
-                            <li><a href="admin/product.htm">Product Management</a>
-                            </li>
+                            <c:choose>
+                                <c:when test="${sessionScope.role == true}">
+                                    <li><a href="admin/employee.htm">Employee Management</a>
+                                    </li>
+                                    <li><a href="admin/producttype.htm">Product Type Management</a>
+                                    </li>
+                                    <li><a href="admin/producer.htm">Producer Management</a>
+                                    </li>
+                                    <li><a href="admin/product.htm">Product Management</a>
+                                    </li>
+                                    <li><a href="admin/account.htm">Account Management</a>
+                                    </li>
+                                    <li><a href="admin/order.htm">Order Management</a>
+                                    </li>
+                                    <li><a href="admin/customer.htm">Customer Management</a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li><a href="admin/producttype.htm">Product Type Management</a>
+                                    </li>
+                                    <li><a href="admin/producer.htm">Producer Management</a>
+                                    </li>
+                                    <li><a href="admin/product.htm">Product Management</a>
+                                    </li>
+                                    <li><a href="admin/order.htm">Order Management</a>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
                         </ul>
                     </div>
                     <div id="Interface" class="tab-pane notika-tab-menu-bg animated flipInX">

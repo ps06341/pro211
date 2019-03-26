@@ -3,7 +3,7 @@
     Created on : Mar 3, 2019, 11:43:56 AM
     Author     : QuangPhu
 --%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="breadcomb-area">
     <div class="container">
         <div class="row">
@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>About</h2>
-                                    <p>Welcome to Notika <span class="bread-ntd">Admin</span></p>
+                                    <p>Welcome to Cửa sau <span class="bread-ntd">Nhật Tảo</span></p>
                                 </div>
                             </div>
                         </div>

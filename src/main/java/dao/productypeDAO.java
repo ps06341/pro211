@@ -19,11 +19,11 @@ import org.hibernate.Transaction;
  */
 public class productypeDAO implements dao<ProductType> {
     
-    public productypeDAO(){}
+  public productypeDAO(){}
     private Session session;
     @Override
     public List<ProductType> findAll(SessionFactory sf) {
-        List<ProductType> list = new ArrayList<ProductType>();
+        List<ProductType> list = new ArrayList<>();
         session = sf.getCurrentSession();
         Query query = session.createQuery("From ProductType");
         list = query.list();
@@ -56,9 +56,24 @@ public class productypeDAO implements dao<ProductType> {
         session.close();
     }
 
+    public void delete(SessionFactory sf, ProductType producttype) {
+        session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        try{
+            producttype.getTypeId();
+            session.delete(producttype);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }
+        session.close();
+    
+    }
+
     @Override
     public void delete(SessionFactory sf) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     
 }

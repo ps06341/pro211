@@ -17,6 +17,7 @@
         <meta name="keywords" content="ecommerce website templates, online store,">
         <title> <s:message code="${index.title}" /></title>
         <base href="${pageContext.servletContext.contextPath}/">
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <!-- Style CSS -->
@@ -42,8 +43,8 @@
     <link href="css/font-awesome.min.css" rel="stylesheet"><!-- /.about -->
     <!-- DataTable Data-->
     <link href="css/jquery.dataTables.min.css" rel="stylesheet" />
-    
-    
+
+
 </head>
 <body>
 
@@ -53,12 +54,11 @@
 
     <!-- slider -->
     <jsp:include page="${index.carousel}" ></jsp:include>
-
         <!-- /.slider -->
 
-        <!-- ALO ALO CONTENT -->   
+        <!--CONTENT -->   
     <jsp:include page="${index.content}" ></jsp:include>
-        <!-- /.ALO ALO CONTENT -->    
+        <!-- /.CONTENT -->    
 
 
         <!-- features Dynamic page-->
@@ -69,6 +69,8 @@
     <%@include file="home/footer.jsp" %>
 
     <!-- /.footer -->
+    <!-- Javascript --> 
+
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -85,8 +87,9 @@
     <script type="text/javascript" src="js/data-table/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/data-table/data-table-act.js"></script>
 
-
-
+    <!-- Javascript validation form --> 
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/register.js"></script> 
 
 </body>
 </html>

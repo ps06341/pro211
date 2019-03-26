@@ -25,7 +25,7 @@ public class Employee implements Serializable {
     @Id
     private String empId;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "AccountID", unique = true)
+    @JoinColumn(name = "AccountID")
     private Account account;
     private String name;
     private Boolean gender;
@@ -34,16 +34,16 @@ public class Employee implements Serializable {
     private String phone;
     
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private Double salary;
     
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startDay;
     
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDay;
     private String image;
 
