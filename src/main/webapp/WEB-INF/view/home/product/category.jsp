@@ -13,7 +13,7 @@
                 <li class='last'><a href='#'>Android Phones</a></li>
             </ul>
         </li>
-        <li class='has-sub'><a href='#'>Brand (07)</a>
+        <li class='has-sub'><a href='#'>Brand</a>
             <ul>
                 <li>
                     <label>
@@ -62,52 +62,7 @@
                 </li>
             </ul>
         </li>
-        <li class='has-sub'><a href='#'>Price</a>
-            <ul>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkbox-list">500-1000</span>
-                    </label>
-                </li>
-                <li><span>
-                        <label>
-                            <input type="checkbox">
-                            <span class="checkbox-list">1000-2000</span>
-                        </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkbox-list">2000-5000</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkbox-list">5000-10000</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkbox-list">10000-1800</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkbox-list">18000-25000</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkbox-list">Above-25000</span>
-                    </label>
-                </li>
-            </ul>
-        </li>
+
 
     </ul>
 </div>

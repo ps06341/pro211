@@ -6,7 +6,7 @@
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!--<link href="css-admin/normalize.css" rel="stylesheet" />
@@ -26,64 +26,131 @@
             padding-right:30px;
     
         }*/
+    .table-striped>tbody>tr:nth-of-type(odd){
+        background-color: #ffffff;
 
-    .col-lg-4, .col-md-5, .col-sm-6, .col-xs-12{
-
+        /*${theCount.count}
+        ${fn:length(products)}
+        <c:if test="${101 gt fn:length(products)}">
+            <p>It is greater than 0</p>
+        </c:if>
+        ${theCount.count+1}*/
     }
 
 </style>
 
-<!--
-<div class="data-table-area">
-    <div class="container">
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="data-table-list">
-<!--                    <div class="basic-tb-hd">
-                        <h2>Show Table</h2>
-                    </div>-->
+
+
+
 <div class="table-responsive">
     <table id="data-table-basic" class="table table-striped">
         <thead>
             <tr>
-                <!--<th>Name</th>-->
-                <!--                <th>Name</th>
-                                <th>Description</th>
-                                <th>Edit</th>-->
+                <th></th>
+                <th></th>
+                <th></th>
                 <th></th>
 
 
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="row" items="${products}">
-
+            <c:forEach var="row" items="${products}" step="4" varStatus="theCount">
+                <%--<c:set var="leng" value="${fn:length(row)}"/>--%>
                 <tr>
-
-
-                    <td> 
+                    <td>
+                        <!--${theCount.count}-->
                         <div class="product-block">
-                            <div class="product-img"><a href="home/${row.productId}.htm"><img src="${row.image}" alt=""></a></div>
+                            <div class="product-img"><a href="home/${products[theCount.index].productId}.htm"><img src="${products[theCount.index].image}" alt=""></a></div>
                             <div class="product-content">
 
                                 <h5>
-                                    <a href="home/${row.productId}.htm" class="product-title">${row.productName}
+                                    <a href="home/${products[theCount.index].productId}.htm" class="product-title">${products[theCount.index].productName}
                                     </a>
                                 </h5>
                                 <div class="product-meta">
-                                    <a href="home/${row.productId}.htm" class="product-price">
-                                        <fmt:formatNumber value="${row.price*1000}" type="cureency" pattern=",### VND" />
+                                    <a href="home/${products[theCount.index].productId}.htm" class="product-price">
+                                        <fmt:formatNumber value="${products[theCount.index].price*1000}" type="cureency" pattern=",### VND" />
                                     </a>
                                 </div>
                                 <div class="shopping-btn">
-                                    <!--<a href="#" class="product-btn btn-like"><i class="fa fa-heart"></i></a>-->
-                                    <a href="<c:url value="home/addCart.htm?producid=${row.productId}&quantity=1" />" class="product-btn btn-cart"><i class="fa fa-shopping-cart"></i></a>
+                                    <a href="<c:url value="home/addCart.htm?producid=${products[theCount.index].productId}&quantity=1" />" class="product-btn btn-cart"><i class="fa fa-shopping-cart"></i></a>
                                 </div>
                             </div>
                         </div>
-
-
                     </td>
+
+                    <c:choose>
+                        <c:when test="${theCount.index+3 le fn:length(products)}">
+
+                            <td> 
+                                <!--${theCount.count+1}-->
+                                <div class="product-block">
+                                    <div class="product-img"><a href="home/${products[theCount.index+1].productId}.htm"><img src="${products[theCount.index+1].image}" alt=""></a></div>
+                                    <div class="product-content">
+
+                                        <h5>
+                                            <a href="home/${products[theCount.index+1].productId}.htm" class="product-title">${products[theCount.index+1].productName}
+                                            </a>
+                                        </h5>
+                                        <div class="product-meta">
+                                            <a href="home/${products[theCount.index+1].productId}.htm" class="product-price">
+                                                <fmt:formatNumber value="${products[theCount.index+1].price*1000}" type="cureency" pattern=",### VND" />
+                                            </a>
+                                        </div>
+                                        <div class="shopping-btn">
+                                            <a href="<c:url value="home/addCart.htm?producid=${products[theCount.index+1].productId}&quantity=1" />" class="product-btn btn-cart"><i class="fa fa-shopping-cart"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td> 
+                                <!--${theCount.count+2}-->
+                                <div class="product-block">
+                                    <div class="product-img"><a href="home/${products[theCount.index+2].productId}.htm"><img src="${products[theCount.index+2].image}" alt=""></a></div>
+                                    <div class="product-content">
+
+                                        <h5>
+                                            <a href="home/${products[theCount.index+2].productId}.htm" class="product-title">${products[theCount.index+2].productName}
+                                            </a>
+                                        </h5>
+                                        <div class="product-meta">
+                                            <a href="home/${products[theCount.index+2].productId}.htm" class="product-price">
+                                                <fmt:formatNumber value="${products[theCount.index+2].price*1000}" type="cureency" pattern=",### VND" />
+                                            </a>
+                                        </div>
+                                        <div class="shopping-btn">
+                                            <!--<a href="#" class="product-btn btn-like"><i class="fa fa-heart"></i></a>-->
+                                            <a href="<c:url value="home/addCart.htm?producid=${products[theCount.index+2].productId}&quantity=1" />" class="product-btn btn-cart"><i class="fa fa-shopping-cart"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td> 
+                                <!--${theCount.count+3}-->
+                                <div class="product-block">
+                                    <div class="product-img"><a href="home/${products[theCount.index+3].productId}.htm"><img src="${products[theCount.index+3].image}" alt=""></a></div>
+                                    <div class="product-content">
+
+                                        <h5>
+                                            <a href="home/${products[theCount.index+3].productId}.htm" class="product-title">${products[theCount.index+3].productName}
+                                            </a>
+                                        </h5>
+                                        <div class="product-meta">
+                                            <a href="home/${products[theCount.index+3].productId}.htm" class="product-price">
+                                                <fmt:formatNumber value="${products[theCount.index+3].price*1000}" type="cureency" pattern=",### VND" />
+                                            </a>
+                                        </div>
+                                        <div class="shopping-btn">
+                                            <a href="<c:url value="home/addCart.htm?producid=${products[theCount.index+3].productId}&quantity=1" />" class="product-btn btn-cart"><i class="fa fa-shopping-cart"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </c:when>
+
+                    </c:choose>
+
 
                 </tr>
 
@@ -91,19 +158,10 @@
         </tbody>
         <tfoot>
             <tr>
-                <!--<th>ID</th>-->
+
                 <td></td>
 
             </tr>
         </tfoot>
     </table>
 </div>
-<!--</div>
-</div>
-</div>-->
-<!--    </div>
-</div>-->
-<script type="text/javascript">
-
-
-</script>

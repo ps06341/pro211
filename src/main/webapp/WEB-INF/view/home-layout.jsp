@@ -43,7 +43,8 @@
     <link href="css/font-awesome.min.css" rel="stylesheet"><!-- /.about -->
     <!-- DataTable Data-->
     <link href="css/jquery.dataTables.min.css" rel="stylesheet" />
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="js/effect.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -74,6 +75,7 @@
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js" type="text/javascript"></script>

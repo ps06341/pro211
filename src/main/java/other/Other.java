@@ -5,6 +5,8 @@
  */
 package other;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Date;
 import org.springframework.stereotype.Component;
 
@@ -14,21 +16,36 @@ import org.springframework.stereotype.Component;
  */
 @Component("other")
 public class Other {
-    
-    public String getTitleWeb(String req){
-        return "home."+req+".title";
+
+    public String getTitleWeb(String req) {
+        return "home." + req + ".title";
     }
-    
-    public String getTitleAdmin(String req){
-        return "admin."+req+".title";
+
+    public String getTitleAdmin(String req) {
+        return "admin." + req + ".title";
     }
-    
-    public String subString(String string){
-        return string.substring(0,string.length()-4);
+
+    public String subString(String string) {
+        return string.substring(0, string.length() - 4);
     }
-    
-    public Date getNow(){
+
+    public Date getNow() {
         return new Date();
     }
-    
+
+    public String formatNumbertoCurrency(int number) {
+        if (number <1000) {
+            return String.valueOf(number);
+        }
+        
+        try {
+            NumberFormat formatter = new DecimalFormat("###,###");
+            String resp = formatter.format(number);
+//            resp = resp.replaceAll(",", ".");
+            return resp;
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
 }

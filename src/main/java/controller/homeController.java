@@ -453,22 +453,30 @@ public class homeController {
         oDAO.create(factory, orders);
 
         String table = "";
+        int tongtien = 0;
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
 //            System.out.println(pair.getKey() + " = " + pair.getValue());
 //            System.out.println(other.getNow());
             pdto = (ProductDTO) pair.getValue();
+            tongtien += pdto.getSanpham().getPrice().intValue() * pdto.getQuantity();
             odDAO.create(factory, new OrderDetails(new OrderDetailsId((String) pair.getKey(), orders.getOrderId()),
                     orders, pdto.getSanpham(), pdto.getQuantity()));
-            table += "<tr><td>" + pdto.getSanpham().getProductName() + "</td><td>" + pdto.getQuantity() + "</td</tr>";
-        }
+            table += "<tr><td>" + pdto.getSanpham().getProductName() + "</td><td>" + pdto.getQuantity() + "</td>"
+                    + "<td>" + other.formatNumbertoCurrency(pdto.getSanpham().getPrice().intValue() * pdto.getQuantity() * 1000) + " VNĐ</td></tr>";
 
-        model.addAttribute("mess", "Pay Success, Thank you !");
+        }
+        table += "<tr>"
+                + "<td colspan=\"2\">TotalBill</td>"
+                + "<td>" + other.formatNumbertoCurrency(tongtien * 1000) + " VNĐ</td>"
+                + "</tr>";
+
+        model.addAttribute("mess", "Pay Success, Thank you ! <br/> Please Check Your Mail ");
         httpsession.setAttribute("shoppingcart", new CartBean());
         mailService.send("ngvdaimail@gmail.com", customer.getEmail(), "Dat Hang Online Cua Sau Nhat Tao",
                 "Danh Sach Mua Hang: <br/>"
                 + "<table border=\"1\">"
-                + "<tr><th>Item</th><th>Quantity</th></tr>"
+                + "<tr><th>Item</th><th>Quantity</th><th>Price</th></tr>"
                 + table
                 + "</table> <br/>");
 
