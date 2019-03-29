@@ -3,44 +3,48 @@
     Created on : Mar 3, 2019, 9:29:13 AM
     Author     : QuangPhu
 --%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <div class="notika-status-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                 <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                     <div class="website-traffic-ctn">
-                        <h2><span class="counter">50,000</span></h2>
-                        <p>Total Website Traffics</p>
+                        <h2><span class="counter">${ttemp}</span></h2>
+                        <p>Total Employee</p>
                     </div>
-                    <div class="sparkline-bar-stats1">9,4,8,6,5,6,4,8,3,5,9,5</div>
+                    <div class="sparkline-bar-stats1">9,4,8,6,5,6,4,8,3,5,9,${ttemp}</div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                 <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                     <div class="website-traffic-ctn">
-                        <h2><span class="counter">90,000</span>k</h2>
-                        <p>Website Impressions</p>
+                        <h2><span class="counter">${ttacc}</span></h2>
+                        <p>Total Account</p>
                     </div>
-                    <div class="sparkline-bar-stats2">1,4,8,3,5,6,4,8,3,3,9,5</div>
+                    <div class="sparkline-bar-stats2">1,4,8,3,5,6,4,8,3,3,9,${ttacc}</div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                 <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                     <div class="website-traffic-ctn">
-                        <h2>$<span class="counter">40,000</span></h2>
-                        <p>Total Online Sales</p>
+                        <h2><span class="counter">${ttpro}</span></h2>
+                        <p>Total Product</p>
                     </div>
-                    <div class="sparkline-bar-stats3">4,2,8,2,5,6,3,8,3,5,9,5</div>
+                    <div class="sparkline-bar-stats3">4,2,8,2,5,6,3,8,3,5,9,${ttpro}</div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                 <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                     <div class="website-traffic-ctn">
-                        <h2><span class="counter">1,000</span></h2>
-                        <p>Total Support Tickets</p>
+                        <h2><span class="counter">${ttcu}</span></h2>
+                        <p>Total Customer</p>
                     </div>
-                    <div class="sparkline-bar-stats4">2,4,8,4,5,7,4,7,3,5,7,5</div>
+                    <div class="sparkline-bar-stats4">2,4,8,4,5,7,4,7,3,5,7,${ttcu}</div>
                 </div>
             </div>
         </div>
@@ -71,8 +75,8 @@
                     <div class="dash-widget-visits"></div>
                     <div class="past-statistic-an">
                         <div class="past-statistic-ctn">
-                            <h3><span class="counter">3,20,000</span></h3>
-                            <p>Page Views</p>
+                            <h3><span class="counter">${ttor}</span></h3>
+                            <p>Total Order</p>
                         </div>
                         <div class="past-statistic-graph">
                             <div class="stats-bar"></div>
@@ -80,22 +84,23 @@
                     </div>
                     <div class="past-statistic-an">
                         <div class="past-statistic-ctn">
-                            <h3><span class="counter">1,03,000</span></h3>
-                            <p>Total Clicks</p>
+                            <h3><span class="counter">${ttorcf}</span></h3>
+                            <p>Total Order Confirm</p>
+                        </div>
+                        <div class="past-statistic-graph">
+                            <div class="stats-bar"></div>
+                        </div>
+                    </div>
+                    <div class="past-statistic-an">
+                        <div class="past-statistic-ctn">
+                            <h3><span class="counter">${ttorcl}</span></h3>
+                            <p>Total Order Cancel</p>
                         </div>
                         <div class="past-statistic-graph">
                             <div class="stats-line"></div>
                         </div>
                     </div>
-                    <div class="past-statistic-an">
-                        <div class="past-statistic-ctn">
-                            <h3><span class="counter">24,00,000</span></h3>
-                            <p>Site Visitors</p>
-                        </div>
-                        <div class="past-statistic-graph">
-                            <div class="stats-bar-2"></div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

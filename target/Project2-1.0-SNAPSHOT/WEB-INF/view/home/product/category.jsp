@@ -3,63 +3,38 @@
     Created on : Feb 26, 2019, 9:21:01 PM
     Author     : Admin
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <div id='cssmenu'>
 
     <ul>
         <li class='has-sub'><a href='#'>CATEGORY</a>
             <ul>
-                <li><a href='#'>Smart Phones</a></li>
-                <li><a href='#'>Cell Phones</a></li>
-                <li class='last'><a href='#'>Android Phones</a></li>
+                <c:forEach var="row" items="${proType}">
+                    <li><a href="home/productTypeId.htm?typeId=${row.typeId}">${row.typeName}</a></li>
+
+                </c:forEach>
+
+                <!--<li><a href='#'>Cell Phones</a></li>-->
+                <!--<li class='last'><a href='#'>Android Phones</a></li>-->
             </ul>
         </li>
         <li class='has-sub'><a href='#'>Brand</a>
             <ul>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkbox-list">Alcatel
-                    </label>
+                <c:forEach var="row" items="${producers}" >
+                    <li>
+                        <label>
+                            <!--<input type="checkbox">-->
+                            <span class="checkbox-list">
+                                <a href="home/producer.htm?producerid=${row.producerId}">
+                                    ${row.producerName}
+                                </a>
+                            </span>
+                        </label>
+                    </li>
+                </c:forEach>
 
-                    </span>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkbox-list">Apple</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkbox-list">Google</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkbox-list">HTC</span>
-                    </label>
-                    </span>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkbox-list">Samsung</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkbox-list">Vivo</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkbox-list">Nexus</span>
-                    </label>
-                </li>
+
             </ul>
         </li>
 

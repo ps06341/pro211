@@ -22,6 +22,7 @@ model\Account.class
 components\ProductDTO.class
 controller\adminController.class
 model\OrderDetails.class
+dao\dashDAO.class
 model\Producer.class
 dao\accountDAO.class
 model\ProductType.class

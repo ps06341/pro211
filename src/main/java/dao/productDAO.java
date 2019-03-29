@@ -43,14 +43,24 @@ public class productDAO implements dao<Product> {
         return list;
     }
 
+    public List<Product> findbyProductType(SessionFactory sf, Integer typeId) {
+        List<Product> list = new ArrayList<>();
+        Session session = sf.getCurrentSession();
+        Query query = session.createQuery("FROM Product as p where p.productType.typeId =:typeid");
+        query.setInteger("typeid", typeId);
+        list = query.list();
+
+        return list;
+    }
+
     public List<Product> findinBrowser(SessionFactory sf, String search) {
         List<Product> list = new ArrayList<>();
         Session session = sf.getCurrentSession();
         Query query = session.createQuery("FROM Product as p where p.productId like :producerid"
                 + " or p.productName like :productname or p.productType.typeId like :typeid");
-        query.setString("producerid", "%"+search+"%");
-        query.setString("productname", "%"+search+"%");
-        query.setString("typeid", "%"+search+"%");
+        query.setString("producerid", "%" + search + "%");
+        query.setString("productname", "%" + search + "%");
+        query.setString("typeid", "%" + search + "%");
         list = query.list();
 
         return list;

@@ -75,16 +75,18 @@ public class accountDAO implements dao<Account> {
         return account;
     }
     
-    public List<Employee> getTaiKhoan(SessionFactory sf, String matk) {
+	public List<Employee> getTaiKhoan(SessionFactory sf, String matk) {
         List<Employee> list = null;
         session = sf.openSession();
         session.beginTransaction();
-        String sql = "select image from Employee where AccountID= '" + matk + "'";
+        String sql = "from Employee where AccountID= '" + matk + "'";
         Query query = session.createQuery(sql);
         list = query.list();
         session.close();
         return list;
     }
+	
+   
     
     public boolean checkUser(SessionFactory sf,String ma) {
         session = sf.openSession();

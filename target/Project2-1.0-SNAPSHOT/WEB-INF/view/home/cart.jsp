@@ -86,8 +86,15 @@
                                                     <td>
                                                         <div class="product-quantity">
                                                             <div class="quantity">
-                                                                <c:set var="sl" value="${rows.value.quantity}" />
-                                                                <input id="addsubtract${count}" type="number" min="1" max="9" step="1" value="${sl}" class="input-text qty text" onkeydown="return false" onclick="buttonClick${count}()" 
+                                                                <c:choose>
+                                                                    <c:when test="${rows.value.sanpham.quantity gt 0}">
+                                                                        <c:set var="sl" value="${rows.value.quantity}" />
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <c:set var="sl" value="0" />
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                                <input id="addsubtract${count}" type="number" min="0" max="${rows.value.sanpham.quantity}" step="1" value="${sl}" class="input-text qty text" onkeydown="return false" onclick="buttonClick${count}()" 
                                                                        style="color: transparent;text-shadow: 0 0 0 black;"/> 
                                                             </div>
                                                         </div>

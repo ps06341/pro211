@@ -8,6 +8,7 @@ package controller;
 import components.Site;
 import dao.accountDAO;
 import dao.customerDAO;
+import dao.dashDAO;
 import dao.employeeDAO;
 import dao.orderDAO;
 import dao.orderDetailDAO;
@@ -70,6 +71,15 @@ public class adminController {
         site.setTitle(other.getTitleAdmin("index"));
         site.setContent("admin/content.jsp");
         model.addAttribute("indexAdmin", site);
+        
+        dashDAO db = new dashDAO();
+        model.addAttribute("ttemp", db.getTotalEmp(factory).get(0));
+        model.addAttribute("ttacc", db.getTotalAccount(factory).get(0));
+        model.addAttribute("ttpro", db.getTotalProduct(factory).get(0));
+        model.addAttribute("ttor", db.getTotalOrder(factory).get(0));
+        model.addAttribute("ttcu", db.getTotalCustomer(factory).get(0));
+        model.addAttribute("ttorcf", db.getTotalOrderConfirm(factory).get(0));
+        model.addAttribute("ttorcl", db.getTotalOrderCancel(factory).get(0));
         return "admin/index";
     }
 
@@ -786,6 +796,14 @@ public class adminController {
         httpSession.removeAttribute("ava");
         return "login/index";
     }
+    
+    @RequestMapping("manager")
+    public String getManager(Model model) {
+        site.setTitle(other.getTitleAdmin("management"));
+        site.setContent("admin/manager.jsp");
+        model.addAttribute("indexAdmin", site);
+        return "admin/index";
+    }
 
     //Login
     @RequestMapping(value = "login", params = "loginad")
@@ -803,7 +821,18 @@ public class adminController {
                 httpSession.setAttribute("user", acc.getUsername());
                 httpSession.setAttribute("role", acc.getRole());
                 List<Employee> list = ac.getTaiKhoan(factory, account.getUsername());
-                httpSession.setAttribute("ava", list.get(0));
+                for(Employee e : list){
+                    httpSession.setAttribute("ava", e.getImage());
+                    httpSession.setAttribute("nameemp", e.getName());  
+                    httpSession.setAttribute("idemp", e.getEmpId());
+                    httpSession.setAttribute("genderemp", e.getGender());
+                    httpSession.setAttribute("birthdayemp", e.getBirthday());
+                    httpSession.setAttribute("startdayemp", e.getStartDay());
+                    httpSession.setAttribute("addressemp", e.getAddress());
+                    httpSession.setAttribute("emailemp", e.getEmail());
+                    httpSession.setAttribute("phoneemp", e.getPhone());
+                    httpSession.setAttribute("salaryemp", e.getSalary());
+                }
                 return "redirect:/admin/index.htm";
             }
 

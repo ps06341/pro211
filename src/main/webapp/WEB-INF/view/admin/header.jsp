@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item nc-al"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-alarm"></i></span><div class="spinner4 spinner-4"></div><div class="ntd-ctn"><span></span></div></a>
+                        <li class="nav-item nc-al"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-alarm"></i></span></a>
                             <div role="menu" class="dropdown-menu message-dd notification-dd animated zoomIn">
                                 <div class="hd-mg-tt">
                                     <h2>Notification</h2>
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-menus"></i></span><div class="spinner4 spinner-4"></div><div class="ntd-ctn"><span></span></div></a>
+                        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-menus"></i></span></a>
                             <div role="menu" class="dropdown-menu message-dd task-dd animated zoomIn">
                                 <div class="hd-mg-tt">
                                     <h2>Tasks</h2>
@@ -83,11 +83,18 @@
                                                 <div class="chat-avaible"><i class="notika-icon notika-dot"></i></div>
                                             </div>
                                             <div class="hd-mg-ctn">
-                                                <h3>Hi! ${sessionScope.user}</h3>
+                                                <h3>Hi! ${sessionScope.nameemp}</h3>
                                                 <p>${sessionScope.role?"Admin":"Employee"}</p>
                                             </div>
                                         </div>
                                             <hr/>
+                                    <a href="admin/manager.htm">
+                                        <div class="hd-message-sn">
+                                            <div class="hd-mg-ctn">
+                                                <h3>Manager Account</h3>
+                                            </div>
+                                        </div>
+                                    </a>
                                     
                                     <a href="admin/login.htm">
                                         <div class="hd-message-sn">
@@ -96,8 +103,6 @@
                                             </div>
                                         </div>
                                     </a>
-                                    
-                                    
                                 </div>
                                 
                             </div>

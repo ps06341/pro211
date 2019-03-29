@@ -58,7 +58,15 @@
                                         <div class="product-quantity">
                                             <h5>Quantity</h5>
                                             <div class="quantity mb20">
-                                                <input type="number" style="color: transparent;text-shadow: 0 0 0 black;" onkeydown="return false" class="input-text qty text" step="1" min="1" max="6" name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*">
+                                                <c:choose>
+                                                    <c:when test="${productSingle.quantity gt 0}">
+                                                        <c:set var="sl" value="1" />
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:set var="sl" value="0" />
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                <input type="number" style="color: transparent;text-shadow: 0 0 0 black;" onkeydown="return false" class="input-text qty text" step="1" min="0" max="${productSingle.quantity}" name="quantity" value="${sl}" title="Qty" size="4" pattern="[0-9]*">
                                                 <input type="hidden" value="${productSingle.productId}" name="aProduct"/>
 
                                             </div>
@@ -109,34 +117,34 @@
                 </div>
             </div>
             <!-- highlights -->
-<!--            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
-                    <!--                    <div class="box" id="product">
-                                            <div class="box-body">
-                                                <div class="highlights">
-                                                    <h4 class="product-small-title">Characteristics</h4>
-                                                    <div class="row">
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                            <ul class="arrow">
-                                                                <li>Nhà Sản Xuất </li>
-                                                                <li>Năm Sản Xuất </li>
-                                                                <li>Số Lượng</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                            <ul class="arrow">
-                                                                <li>${productSingle.producer.producerName}</li>
-                                                                <li>${productSingle.productDAY}</li>
-                                                                <li>${productSingle.quantity}</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+            <!--            <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+            <!--                    <div class="box" id="product">
+                                    <div class="box-body">
+                                        <div class="highlights">
+                                            <h4 class="product-small-title">Characteristics</h4>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                    <ul class="arrow">
+                                                        <li>Nhà Sản Xuất </li>
+                                                        <li>Năm Sản Xuất </li>
+                                                        <li>Số Lượng</li>
+                                                    </ul>
                                                 </div>
-                    
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                    <ul class="arrow">
+                                                        <li>${productSingle.producer.producerName}</li>
+                                                        <li>${productSingle.productDAY}</li>
+                                                        <li>${productSingle.quantity}</li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>-->
-<!--                </div>
-            </div>-->
+                                        </div>
+            
+                                    </div>
+                                </div>-->
+            <!--                </div>
+                        </div>-->
         </div>
     </div>
 </div>

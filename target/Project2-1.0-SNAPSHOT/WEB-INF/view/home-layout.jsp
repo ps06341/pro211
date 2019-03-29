@@ -87,7 +87,7 @@
     <script type="text/javascript" src="js/effect.js"></script>
     <!-- DataTable Data-->
     <script type="text/javascript" src="js/data-table/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="js/data-table/data-table-act.js"></script>
+    <!--<script type="text/javascript" src="js/data-table/data-table-act.js"></script>-->
 
     <!-- Javascript validation form --> 
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>

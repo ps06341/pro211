@@ -15,6 +15,7 @@ import dao.orderDAO;
 import dao.orderDetailDAO;
 import dao.producerDAO;
 import dao.productDAO;
+import dao.productypeDAO;
 import java.util.Iterator;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
@@ -251,6 +252,12 @@ public class homeController {
         productDAO pd = new productDAO();
         model.addAttribute("products", pd.findAll(factory));
 
+        productypeDAO ptd = new productypeDAO();
+        model.addAttribute("proType", ptd.findAll(factory));
+
+        producerDAO pcD = new producerDAO();
+        model.addAttribute("producers", pcD.findAll(factory));
+
         return "home/index";
     }
 
@@ -328,6 +335,32 @@ public class homeController {
         productDAO pd = new productDAO();
         model.addAttribute("products", pd.findbyProducer(factory, id));
 
+        productypeDAO ptd = new productypeDAO();
+        model.addAttribute("proType", ptd.findAll(factory));
+
+        producerDAO pcD = new producerDAO();
+        model.addAttribute("producers", pcD.findAll(factory));
+
+        return "home/index";
+    }
+
+    @RequestMapping(value = "productTypeId")
+    public String getProductbyTypeId(Model model, @RequestParam("typeId") Integer id) {
+        site.setTitle(other.getTitleWeb("product"));
+        site.setCarousel("home/blank.jsp");
+        site.setContent("home/product.jsp");
+        site.setFeature("home/blank.jsp");
+        model.addAttribute("index", site);
+
+        productDAO pd = new productDAO();
+        model.addAttribute("products", pd.findbyProductType(factory, id));
+
+        productypeDAO ptd = new productypeDAO();
+        model.addAttribute("proType", ptd.findAll(factory));
+
+        producerDAO pcD = new producerDAO();
+        model.addAttribute("producers", pcD.findAll(factory));
+
         return "home/index";
     }
 
@@ -358,8 +391,16 @@ public class homeController {
         if (cartbean == null) {
             cartbean = new CartBean();
         }
-        productdto = new ProductDTO(pd.findbyProductId(factory, id), quantity);
-        cartbean.addSanPham(productdto, quantity);
+        Product p = pd.findbyProductId(factory, id);
+        if (p.getQuantity() > 0) {
+            productdto = new ProductDTO(p, quantity);
+            cartbean.addSanPham(productdto, quantity);
+        } else {
+            productdto = new ProductDTO(p, 0);
+             cartbean.addSanPham(productdto, 0);
+        }
+//        productdto = new ProductDTO(pd.findbyProductId(factory, id), quantity);
+
         httpsession.setAttribute("shoppingcart", cartbean);
 
 //        System.out.println(productdto.getSanpham().getProductName());
@@ -459,6 +500,11 @@ public class homeController {
 //            System.out.println(pair.getKey() + " = " + pair.getValue());
 //            System.out.println(other.getNow());
             pdto = (ProductDTO) pair.getValue();
+            if (pdto.getQuantity() == 0) {
+                model.addAttribute("mess", "<font size=\"3\" color=\"red\">Has a product to be empty! Please check Cart!</font>");
+
+                return getCart(model, httpsession);
+            }
             tongtien += pdto.getSanpham().getPrice().intValue() * pdto.getQuantity();
             odDAO.create(factory, new OrderDetails(new OrderDetailsId((String) pair.getKey(), orders.getOrderId()),
                     orders, pdto.getSanpham(), pdto.getQuantity()));
